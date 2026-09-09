@@ -1,4 +1,4 @@
-name = "www-heiki-frontend"
+name = "www-heiki"
 compatibility_date = "2026-09-09"
 
 [[d1_databases]]
