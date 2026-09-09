@@ -1,19 +1,18 @@
 import type { APIRoute } from 'astro';
-import { DatabaseSync } from 'node:sqlite';
+import { env } from 'cloudflare:workers';
 
-const dbPath = 'C:/Users/motchiy/db/www-heiki.sqlite';
-
-function getDb() {
-  const db = new DatabaseSync(dbPath);
-  db.exec(`
+async function initDb(db: any) {
+  await db.prepare(`
     CREATE TABLE IF NOT EXISTS channels (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         channel_id TEXT UNIQUE,
         channel_name TEXT,
         total_posts INTEGER DEFAULT 0,
         last_updated DATETIME
-    );
+    )
+  `).run();
 
+  await db.prepare(`
     CREATE TABLE IF NOT EXISTS videos (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         video_id TEXT,
@@ -22,21 +21,30 @@ function getDb() {
         channel_id TEXT,
         is_deleted INTEGER DEFAULT 0,
         created_at DATETIME
-    );
+    )
+  `).run();
 
+  await db.prepare(`
     CREATE TABLE IF NOT EXISTS oembed_cache (
         video_id TEXT PRIMARY KEY,
         title TEXT,
         author TEXT,
         author_url TEXT,
         updated_at DATETIME
-    );
+    )
+  `).run();
 
-    CREATE INDEX IF NOT EXISTS idx_videos_is_deleted_created ON videos(is_deleted, created_at DESC);
-    CREATE INDEX IF NOT EXISTS idx_channels_channel_id ON channels(channel_id);
-    CREATE INDEX IF NOT EXISTS idx_videos_channel_id ON videos(channel_id);
-  `);
-  return db;
+  await db.prepare(`
+    CREATE INDEX IF NOT EXISTS idx_videos_is_deleted_created ON videos(is_deleted, created_at DESC)
+  `).run();
+
+  await db.prepare(`
+    CREATE INDEX IF NOT EXISTS idx_channels_channel_id ON channels(channel_id)
+  `).run();
+
+  await db.prepare(`
+    CREATE INDEX IF NOT EXISTS idx_videos_channel_id ON videos(channel_id)
+  `).run();
 }
 
 export const GET: APIRoute = async ({ request }) => {
@@ -46,20 +54,24 @@ export const GET: APIRoute = async ({ request }) => {
   const headers = { 'Content-Type': 'application/json; charset=utf-8' };
 
   try {
-    const db = getDb();
+    const db = (env as any).DB;
+    if (!db) {
+      return new Response(JSON.stringify({ ok: false, error: 'D1 database binding (DB) not found' }), { headers });
+    }
+
+    await initDb(db);
 
     if (action === 'list') {
-      const stmt = db.prepare(`
+      const { results: rows } = await db.prepare(`
         SELECT v.*, c.channel_name, c.total_posts
         FROM videos v
         JOIN channels c ON c.channel_id = v.channel_id
         WHERE v.is_deleted = 0
         ORDER BY v.created_at DESC
         LIMIT 20
-      `);
-      const rows = stmt.all() as any[];
+      `).all();
 
-      const entries = rows.map(r => ({
+      const entries = (rows || []).map((r: any) => ({
         videoUrl: `https://www.youtube.com/watch?v=${r.video_id}`,
         title: r.title,
         thumbnailUrl: `https://i.ytimg.com/vi/${r.video_id}/hqdefault.jpg`,
@@ -103,8 +115,7 @@ export const GET: APIRoute = async ({ request }) => {
         return new Response(JSON.stringify({ ok: false, error: 'YouTube動画URLではありません' }), { headers });
       }
 
-      const cacheStmt = db.prepare('SELECT * FROM oembed_cache WHERE video_id = ?');
-      const cache = cacheStmt.get(videoId) as any;
+      const cache = await db.prepare('SELECT * FROM oembed_cache WHERE video_id = ?').bind(videoId).first() as any;
 
       let clientTitle = url.searchParams.get('title') || '';
       let clientAuthor = url.searchParams.get('author') || '';
@@ -145,10 +156,10 @@ export const GET: APIRoute = async ({ request }) => {
         author = author || 'Unknown Channel';
         authorUrl = authorUrl || `https://www.youtube.com/@${author.replace(/[^a-zA-Z0-9_-]/g, '')}`;
 
-        db.prepare(`
+        await db.prepare(`
           INSERT OR REPLACE INTO oembed_cache (video_id, title, author, author_url, updated_at)
           VALUES (?, ?, ?, ?, datetime('now'))
-        `).run(videoId, title, author, authorUrl);
+        `).bind(videoId, title, author, authorUrl).run();
       }
 
       let channelId = '';
@@ -160,54 +171,52 @@ export const GET: APIRoute = async ({ request }) => {
       }
 
       try {
-        db.exec('BEGIN TRANSACTION;');
-
-        const chCheck = db.prepare('SELECT id FROM channels WHERE channel_id = ?').get(channelId);
+        const chCheck = await db.prepare('SELECT id FROM channels WHERE channel_id = ?').bind(channelId).first();
         if (!chCheck) {
-          db.prepare(`
+          await db.prepare(`
             INSERT INTO channels (channel_id, channel_name, total_posts, last_updated)
             VALUES (?, ?, 0, datetime('now'))
-          `).run(channelId, author);
+          `).bind(channelId, author).run();
         } else {
-          db.prepare('UPDATE channels SET last_updated = datetime(\'now\') WHERE channel_id = ?').run(channelId);
+          await db.prepare('UPDATE channels SET last_updated = datetime(\'now\') WHERE channel_id = ?').bind(channelId).run();
         }
 
-        const recentCountRow = db.prepare(`
+        const recentCountRow = await db.prepare(`
           SELECT COUNT(*) as cnt FROM videos
           WHERE channel_id = ?
           AND created_at >= datetime('now', '-24 hours')
-        `).get(channelId) as any;
+        `).bind(channelId).first() as any;
 
         if (recentCountRow && recentCountRow.cnt > 0) {
-          db.exec('ROLLBACK;');
           return new Response(JSON.stringify({ ok: false, error: '同じチャンネルは24時間以内に再投稿できません' }), { headers });
         }
 
-        const existingVideo = db.prepare('SELECT id FROM videos WHERE video_id = ?').get(videoId) as any;
+        const existingVideo = await db.prepare('SELECT id FROM videos WHERE video_id = ?').bind(videoId).first() as any;
 
         if (existingVideo) {
-          db.prepare(`
-            UPDATE videos
-            SET created_at = datetime('now'),
-                title = ?,
-                channel_name = ?,
-                channel_id = ?
-            WHERE video_id = ?
-          `).run(title, author, channelId, videoId);
+          await db.batch([
+            db.prepare(`
+              UPDATE videos
+              SET created_at = datetime('now'),
+                  title = ?,
+                  channel_name = ?,
+                  channel_id = ?
+              WHERE video_id = ?
+            `).bind(title, author, channelId, videoId),
+            db.prepare('UPDATE channels SET total_posts = total_posts + 1 WHERE channel_id = ?').bind(channelId)
+          ]);
         } else {
-          db.prepare(`
-            INSERT INTO videos (video_id, title, channel_name, channel_id, created_at)
-            VALUES (?, ?, ?, ?, datetime('now'))
-          `).run(videoId, title, author, channelId);
+          await db.batch([
+            db.prepare(`
+              INSERT INTO videos (video_id, title, channel_name, channel_id, created_at)
+              VALUES (?, ?, ?, ?, datetime('now'))
+            `).bind(videoId, title, author, channelId),
+            db.prepare('UPDATE channels SET total_posts = total_posts + 1 WHERE channel_id = ?').bind(channelId)
+          ]);
         }
-
-        db.prepare('UPDATE channels SET total_posts = total_posts + 1 WHERE channel_id = ?').run(channelId);
-
-        db.exec('COMMIT;');
 
         return new Response(JSON.stringify({ ok: true, inserted: !existingVideo, updated: !!existingVideo }), { headers });
       } catch (err: any) {
-        db.exec('ROLLBACK;');
         return new Response(JSON.stringify({ ok: false, error: 'DBエラー: ' + err.message }), { headers });
       }
     }
