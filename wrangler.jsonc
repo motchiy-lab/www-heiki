@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "www-heiki",
+  "main": "./dist/_worker.js",
+  "compatibility_date": "2026-09-09",
+
+  // 静的アセット（画像やHTMLなど）の配信設定
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+
+  // D1データベースのバインド設定（元の設定を引き継ぎ）
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "www-heiki",
+      "database_id": "88228084-4b6c-47ff-a7e9-d07e69848020"
+    }
+  ]
+}

@@ -1,7 +1,0 @@
-name = "www-heiki"
-compatibility_date = "2026-09-09"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "www-heiki"
-database_id = "88228084-4b6c-47ff-a7e9-d07e69848020"
