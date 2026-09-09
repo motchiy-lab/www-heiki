@@ -1,0 +1,623 @@
+---
+---
+
+<!doctype html>
+<html lang="ja">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-PZSJNQ3TX2"
+        ></script>
+        <script is:inline>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-PZSJNQ3TX2");
+        </script>
+        <link rel="canonical" href="https://heiki.motchiy.com/errors.html" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Heiki's Board - おもしろエラーページ集</title>
+        <meta
+            name="description"
+            content="Heiki's Boardに実装されている、定番のものからちょっと変わったものまでのいろいろなエラーページをリストアップしてまとめています。それぞれのエラーページで表示されるイラストを見ることもできます！"
+        />
+        <meta name="keywords" content="HTML,PHP,Status Code" />
+        <link rel="icon" href="/imgs/favicon.png" type="image/png" />
+
+        <meta
+            property="og:title"
+            content="Heiki's Board - おもしろエラーページ集"
+        />
+        <meta
+            property="og:description"
+            content="Heiki's Boardに実装されている、定番のものからちょっと変わったものまでのいろいろなエラーページをリストアップしてまとめています。それぞれのエラーページで表示されるイラストを見ることもできます！"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:url"
+            content="https://heiki.motchiy.com/errors.html"
+        />
+        <meta
+            property="og:image"
+            content="https://heiki.motchiy.com/imgs/ogp.png"
+        />
+        <meta property="og:site_name" content="Heiki's Board" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Heiki's Board - おもしろエラーページ集"
+        />
+        <meta
+            name="twitter:description"
+            content="Heiki's Boardに実装されている、定番のものからちょっと変わったものまでのいろいろなエラーページをリストアップしてまとめています。それぞれのエラーページで表示されるイラストを見ることもできます！"
+        />
+        <meta
+            name="twitter:image"
+            content="https://heiki.motchiy.com/imgs/ogp.png"
+        />
+
+        <link rel="stylesheet" href="/style.css" />
+        <link rel="stylesheet" href="/documents_style.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img
+                    src="https://heiki.motchiy.com/imgs/shatranj_icon.png"
+                    width="32"
+                    alt="シャトランジくんのアイコン"
+                />
+                <div style="opacity:.9">
+                    Heiki's Board - 超シンプルなYouTube宣伝掲示板！
+                </div>
+            </div>
+            <div class="header-links">
+                <a
+                    href="https://heiki.motchiy.com/"
+                    class="pc-mode header-link"
+                >
+                    掲示板トップ
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_banner.html"
+                    class="pc-mode header-link"
+                >
+                    バナー広告について
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_badges.html"
+                    class="pc-mode header-link"
+                >
+                    バッジについて
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_shatranj.html"
+                    class="pc-mode header-link"
+                >
+                    シャトランジくんについて
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/"
+                    class="sp-mode header-link"
+                >
+                    トップ
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_banner.html"
+                    class="sp-mode header-link"
+                >
+                    バナー広告
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_badges.html"
+                    class="sp-mode header-link"
+                >
+                    バッジ
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_shatranj.html"
+                    class="sp-mode header-link"
+                >
+                    シャトランジくん
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/credits.html"
+                    class="header-link"
+                >
+                    クレジット
+                </a>
+            </div>
+        </header>
+        <main>
+            <div class="banner-row">
+                <a href="https://www.pixiv.net/users/64641168" target="_blank">
+                    <img
+                        src="/imgs/banner_heiki_pixiv.png"
+                        alt="さいほうへいきのpixivのバナー広告"
+                    />
+                </a>
+
+                <a
+                    href="https://kakuyomu.jp/works/16818792439776244514"
+                    target="_blank"
+                >
+                    <img
+                        src="/imgs/banner_takutan_spice.png"
+                        alt="『たくたんは香辛料を体に入れ込む』バナー広告"
+                    />
+                </a>
+
+                <a href="/about_banner.html" target="_blank">
+                    <img
+                        src="https://heiki.motchiy.com/imgs/empty_banner.png"
+                        alt="チャンネルバナー広告(広告掲載募集)"
+                    />
+                </a>
+            </div>
+            <hr />
+            <div class="documents-container">
+                <h1>おもしろエラーページ集</h1>
+                <div class="toc-box">
+                    <p class="toc-title">この記事の目次</p>
+                    <ul class="toc-list">
+                        <li>
+                            <a href="#overview">1. 概要</a>
+                        </li>
+                        <li>
+                            <a href="#list">2. 一覧表</a>
+                        </li>
+                        <li>
+                            <a href="#ytdlp">
+                                1. yt-dlp on Motchiyのエラーページ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#checkable">
+                                3. 実際にステータスコードを確認できるもの
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <h2 id="overview">概要</h2>
+                <p>
+                    <b>
+                        このサイトには、運営者の趣味で多種多様なエラーページが用意されています。
+                    </b>
+                </p>
+                <p>
+                    みなさんも「<b>404 Not Found</b>」や「
+                    <b>500 Internal Server Error</b>
+                    」あたりなら聞いたことがあるかもしれません。
+                    <br />
+                    でもHTTPには、それ以外にもものすごい量のエラーが定義されているんですよ。
+                </p>
+                <p>
+                    <b>
+                        このHeiki's
+                        Boardでは、それらに対応したページをたくさん取り揃えていく
+                    </b>
+                    つもりがあります。
+                    <br />
+                    それぞれのページには僕が描いた落書きイラストもあるので、ぜひ見ていってください。
+                </p>
+                <p>
+                    最後に、<b>ひとつ注意点があります！</b>
+                    <br />
+                    それぞれのページは直接確認すると、実際にはエラーコードが内部的には返ってきません。
+                    <br />
+                    そのため、実際に404などのコードを確認したい場合には、それぞれの特定の手順を踏むか、一番下のリストからエラーが返ってくるページを見る必要があるんですね。
+                    <br />
+                    ややこしい。
+                </p>
+                <h2 id="list">一覧表</h2>
+                <ul>
+                    <li>
+                        <b>
+                            <a href="/400.html">400 Bad Request</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/401.html">401 Unauthorized</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/402.html">402 Payment Required</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/403.html">403 Forbidden</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/404.html">404 Not Found</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/405.html">405 Method Not Allowed</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/406.html">406 Not Acceptable</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/407.html">
+                                407 Proxy Authentication Required
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/408.html">408 Request Timeout</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/409.html">409 Conflict</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/410.html">410 Gone</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/411.html">411 Length Required</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/412.html">412 Precondition Failed</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/413.html">413 Content Too Large</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/414.html">414 URI Too Long</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/415.html">415 Unsupported Media Type</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/416.html">416 Range Not Satisfiable</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/417.html">417 Expectation Failed</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/418.html">418 I'm a teapot.</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/429.html">429 Too Many Requests</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/451.html">
+                                451 Unavailable For Legal Reasons
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/500.html">500 Internal Server Error</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/503.html">503 Service Unavailable</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/507.html">507 Insufficient Storage</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/508.html">508 Loop Detected</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/810.html">810 The Pillow is Too Big</a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="/925.html">925 I'M BREAKING RULES!!!!</a>
+                        </b>
+                    </li>
+                </ul>
+
+                <h3 id="ytdlp">yt-dlp on Motchiyのエラーページ</h3>
+                <p>
+                    また、姉妹サイトである
+                    <a href="https://ytdlp.motchiy.com/">yt-dlp on Motchiy</a>
+                    のエラーページについても同様にまとめておきます。
+                    <br />
+                    あちらでは、ステータスコードが同じでも実際のプログラム中での発生原因が異なるケースが有るため、特殊なエラーページもいくつか作成されています。
+                </p>
+                <ul>
+                    <li>
+                        <b>
+                            <a href="https://ytdlp.motchiy.com/400.html">
+                                400 Bad Request
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://ytdlp.motchiy.com/403.html">
+                                403 Forbidden
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://ytdlp.motchiy.com/404.html">
+                                404 Not Found
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://ytdlp.motchiy.com/429.html">
+                                429 Too Many Requests
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://ytdlp.motchiy.com/507.html">
+                                507 Insufficient Storage
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://ytdlp.motchiy.com/400_invalid_domain.html">
+                                Invalid Domain / 無効なドメイン
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://ytdlp.motchiy.com/500_download_error.html">
+                                Download Error / ダウンロードエラー
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://ytdlp.motchiy.com/500_unknown_action.html">
+                                Unknown Action / 不明なアクション
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://ytdlp.motchiy.com/502_access_error.html">
+                                Access Error / アクセスエラー
+                            </a>
+                        </b>
+                    </li>
+                </ul>
+
+                <h2 id="checkable">実際にステータスコードを確認できるもの</h2>
+                <ul>
+                    <li>
+                        <b>
+                            <a href="https://heiki.motchiy.com/unauthorized">
+                                401 Unauthorized
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://heiki.motchiy.com/forbidden">
+                                403 Forbidden
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://heiki.motchiy.com/request_timeout">
+                                408 Request Timeout.
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://heiki.motchiy.com/teapot">
+                                418 I'm a teapot.
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://heiki.motchiy.com/unavailable_for_legal_reasons">
+                                451 Unavailable For Legal Reasons
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://heiki.motchiy.com/insufficient_storage">
+                                507 Insufficient Storage
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://heiki.motchiy.com/loop_detected">
+                                508 Loop Detected
+                            </a>
+                        </b>
+                    </li>
+                    <li>
+                        <b>
+                            <a href="https://heiki.motchiy.com/rulebreak">
+                                925 I'M BREAKING RULES!!!!
+                            </a>
+                        </b>
+                    </li>
+                </ul>
+                <p>
+                    また、このステータスコードについては
+                    <a href="/status_scripts/">ステータスコードじっけんラボ</a>
+                    にもまとめられているので、ぜひ併せてご覧ください。
+                </p>
+            </div>
+        </main>
+        <footer>
+            <div class="info-grid">
+                <article class="info-card" tabindex="0">
+                    <div class="info-thumb">
+                        <img
+                            src="https://heiki.motchiy.com/imgs/heikikun.png"
+                            width="40"
+                            alt="さいほうへいきのアイコン"
+                        />
+                    </div>
+                    <div class="info-body">
+                        <div class="info-title">
+                            <a href="/credits_heiki.html">
+                                サイト運営: さいほうへいき
+                            </a>
+                        </div>
+                        <div class="info-text">
+                            この掲示板の制作者。フィードバック大歓迎。イラスト小説かいてます。
+                        </div>
+                    </div>
+                </article>
+
+                <article class="info-card" tabindex="0">
+                    <div class="info-thumb">
+                        <img
+                            src="https://heiki.motchiy.com/imgs/motchiy.png"
+                            width="40"
+                            alt="Motchiyのアイコン"
+                        />
+                    </div>
+                    <div class="info-body">
+                        <div class="info-title">
+                            <a href="/credits_motchiy.html">
+                                サーバー運営: Motchiy
+                            </a>
+                        </div>
+                        <div class="info-text">
+                            サーバーの運営者。接続の問題があればこのひとを荒らしてください。
+                        </div>
+                    </div>
+                </article>
+
+                <article class="info-card" tabindex="0">
+                    <div class="info-thumb">📠</div>
+                    <div class="info-body">
+                        <div class="info-title">コンタクト</div>
+                        <div class="info-text">
+                            <a
+                                href="https://x.com/leoved_kuru"
+                                class="link-inline"
+                            >
+                                さいほうへいきのTwitter
+                            </a>
+                            <hr />
+                            <a
+                                href="https://x.com/motchiy_tuti"
+                                class="link-inline"
+                            >
+                                MotchiyのTwitter
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="info-card" tabindex="0">
+                    <div class="info-thumb">🔗</div>
+                    <div class="info-body">
+                        <div class="info-title">関連リンク</div>
+                        <div class="info-text">
+                            <a
+                                href="https://www.youtube.com/@saihou-heiki"
+                                class="link-inline"
+                            >
+                                さいほうへいきのYouTube
+                            </a>
+                            <hr />
+                            <a
+                                class="link-inline"
+                                href="https://www.youtube.com/@motchiy_tuti"
+                            >
+                                MotchiyのYouTube
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="share-buttons">
+                <a class="share-btn twitter" target="_blank" rel="noopener">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg"
+                        class="icon"
+                        alt="Twitterアイコン"
+                    />
+                    Twitterで共有
+                </a>
+
+                <a class="share-btn facebook" target="_blank" rel="noopener">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+                        class="icon"
+                        alt="Facebookアイコン"
+                    />
+                    Facebookで共有
+                </a>
+
+                <a class="share-btn line" target="_blank" rel="noopener">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/line.svg"
+                        class="icon"
+                        alt="LINEアイコン"
+                    />
+                    LINEで共有
+                </a>
+            </div>
+
+            <div style="margin-top:18px;color:#555;font-size:13px;text-align:center">
+                Copyright (C) 2025-2026 さいほうへいき
+            </div>
+        </footer>
+        <script is:inline src="/sharebtn.js"></script>
+    </body>
+</html>

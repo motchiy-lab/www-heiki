@@ -1,0 +1,565 @@
+---
+export const prerender = true;
+
+export async function getStaticPaths() {
+    const codes = [
+        "400",
+        "401",
+        "402",
+        "403",
+        "404",
+        "405",
+        "406",
+        "407",
+        "408",
+        "409",
+        "410",
+        "411",
+        "412",
+        "413",
+        "414",
+        "415",
+        "416",
+        "417",
+        "418",
+        "429",
+        "451",
+        "500",
+        "503",
+        "507",
+        "508",
+        "810",
+        "925",
+        "unauthorized",
+        "forbidden",
+        "request_timeout",
+        "teapot",
+        "unavailable_for_legal_reasons",
+        "insufficient_storage",
+        "loop_detected",
+        "rulebreak",
+    ];
+    return codes.map((code) => ({ params: { code } }));
+}
+
+const { code } = Astro.params;
+
+const errorMap: Record<
+    string,
+    {
+        name: string;
+        short: string;
+        long: string;
+        is925?: boolean;
+        numericCode: string;
+    }
+> = {
+    "400": {
+        name: "400 Bad Request",
+        short: "不正なリクエストです。",
+        long: "不正なリクエストが送信されたため、このサーバーでは処理を行えません。",
+        numericCode: "400",
+    },
+    "401": {
+        name: "401 Unauthorized",
+        short: "認証が必要です。",
+        long: "このページにアクセスするには適切な認証情報（パスワードやトークン等）が必要です。",
+        numericCode: "401",
+    },
+    unauthorized: {
+        name: "401 Unauthorized",
+        short: "認証が必要です。",
+        long: "このページにアクセスするには適切な認証情報（パスワードやトークン等）が必要です。",
+        numericCode: "401",
+    },
+    "402": {
+        name: "402 Payment Required",
+        short: "料金の支払いが必要です。",
+        long: "有料コンテンツまたはサービスのため、お支払いが確認されるまでアクセスできません。",
+        numericCode: "402",
+    },
+    "403": {
+        name: "403 Forbidden",
+        short: "アクセスが拒否されました。",
+        long: "このページへのアクセス権限がありません。<br>許可されていないエリアに侵入しようとしていませんか？",
+        numericCode: "403",
+    },
+    forbidden: {
+        name: "403 Forbidden",
+        short: "アクセスが拒否されました。",
+        long: "このページへのアクセス権限がありません。<br>許可されていないエリアに侵入しようとしていませんか？",
+        numericCode: "403",
+    },
+    "404": {
+        name: "404 Not Found",
+        short: "お探しのページは見つかりませんでしたにゃん……。",
+        long: "お探しのページは見つかりませんでした。<br>アドレスが間違っているか、ページが工事中で公開されていません。<br>アクセスしようとしたURLが適切なものかご確認ください。",
+        numericCode: "404",
+    },
+    "405": {
+        name: "405 Method Not Allowed",
+        short: "許可されていないHTTPメソッドです。",
+        long: "このリクエストで使用されたHTTPメソッドはこのURLではサポートされていません。",
+        numericCode: "405",
+    },
+    "406": {
+        name: "406 Not Acceptable",
+        short: "受け入れられないコンテンツです。",
+        long: "リクエストされたリソースは、リクエストのAcceptヘッダーで指定された条件を満たしていません。",
+        numericCode: "406",
+    },
+    "407": {
+        name: "407 Proxy Authentication Required",
+        short: "プロキシ認証が必要です。",
+        long: "プロキシサーバーを通した認証が必要です。",
+        numericCode: "407",
+    },
+    "408": {
+        name: "408 Request Timeout",
+        short: "リクエストがタイムアウトしました。",
+        long: "サーバーがリクエストを待機している間にタイムアウトが発生しました。",
+        numericCode: "408",
+    },
+    request_timeout: {
+        name: "408 Request Timeout",
+        short: "リクエストがタイムアウトしました。",
+        long: "サーバーがリクエストを待機している間にタイムアウトが発生しました。",
+        numericCode: "408",
+    },
+    "409": {
+        name: "409 Conflict",
+        short: "リクエストが競合しています。",
+        long: "リソースの現在の状態と競合が発生したため、リクエストを完了できませんでした。",
+        numericCode: "409",
+    },
+    "410": {
+        name: "410 Gone",
+        short: "リソースは既に削除されています。",
+        long: "お探しのページやリソースは永久に削除され、現在存在しません。",
+        numericCode: "410",
+    },
+    "411": {
+        name: "411 Length Required",
+        short: "コンテンツの長さが必要です。",
+        long: "Content-Lengthヘッダーが含まれていないため、リクエストを受け付けられません。",
+        numericCode: "411",
+    },
+    "412": {
+        name: "412 Precondition Failed",
+        short: "前提条件が失敗しました。",
+        long: "リクエストヘッダーで指定された前提条件がサーバー側の評価で満たされませんでした。",
+        numericCode: "412",
+    },
+    "413": {
+        name: "413 Content Too Large",
+        short: "コンテンツが大きすぎます。",
+        long: "送信されたデータがサーバーの処理可能な上限サイズを超えています。",
+        numericCode: "413",
+    },
+    "414": {
+        name: "414 URI Too Long",
+        short: "URIが長すぎます。",
+        long: "リクエストされたURLが長すぎるため、サーバーが処理を拒否しました。",
+        numericCode: "414",
+    },
+    "415": {
+        name: "415 Unsupported Media Type",
+        short: "サポートされていないメディアタイプです。",
+        long: "送信されたデータのメディアフォーマットがこのリソースではサポートされていません。",
+        numericCode: "415",
+    },
+    "416": {
+        name: "416 Range Not Satisfiable",
+        short: "範囲を指定できません。",
+        long: "リクエストで指定されたRangeヘッダーの範囲が無効です。",
+        numericCode: "416",
+    },
+    "417": {
+        name: "417 Expectation Failed",
+        short: "Expectヘッダーの条件を満たせません。",
+        long: "リクエストのExpectヘッダーで指定された期待値をサーバーが満たすことができませんでした。",
+        numericCode: "417",
+    },
+    "418": {
+        name: "418 I'm a teapot.",
+        short: "私はティーポットです。",
+        long: "私はティーポットです。<br>残念ながらこのサイトでコーヒーを淹れることはできません。",
+        numericCode: "418",
+    },
+    teapot: {
+        name: "418 I'm a teapot.",
+        short: "私はティーポットです。",
+        long: "私はティーポットです。<br>残念ながらこのサイトでコーヒーを淹れることはできません。",
+        numericCode: "418",
+    },
+    "429": {
+        name: "429 Too Many Requests",
+        short: "リクエストが多すぎます。",
+        long: "短時間に大量のリクエストが送信されたため、一時的にアクセスを制限しています。",
+        numericCode: "429",
+    },
+    "451": {
+        name: "451 Unavailable For Legal Reasons",
+        short: "法的理由により利用できません。",
+        long: "このコンテンツは法令上の理由または政府機関等の要求によりアクセスが制限されています。",
+        numericCode: "451",
+    },
+    unavailable_for_legal_reasons: {
+        name: "451 Unavailable For Legal Reasons",
+        short: "法的理由により利用できません。",
+        long: "このコンテンツは法令上の理由または政府機関等の要求によりアクセスが制限されています。",
+        numericCode: "451",
+    },
+    "500": {
+        name: "500 Internal Server Error",
+        short: "内部サーバーエラーが発生しました。",
+        long: "サーバー内部で予期せぬエラーが発生しました。",
+        numericCode: "500",
+    },
+    "503": {
+        name: "503 Service Unavailable",
+        short: "サービスは現在利用できません。",
+        long: "サーバーがメンテナンス中であるか、過負荷のため一時的にリクエストを処理できません。",
+        numericCode: "503",
+    },
+    "507": {
+        name: "507 Insufficient Storage",
+        short: "ストレージ容量が不足しています。",
+        long: "サーバー上のストレージ容量が不足しているため、リクエストを完了できませんでした。",
+        numericCode: "507",
+    },
+    insufficient_storage: {
+        name: "507 Insufficient Storage",
+        short: "ストレージ容量が不足しています。",
+        long: "サーバー上のストレージ容量が不足しているため、リクエストを完了できませんでした。",
+        numericCode: "507",
+    },
+    "508": {
+        name: "508 Loop Detected",
+        short: "無限ループが検出されました。",
+        long: "処理中に無限ループやリダイレクトの循環が検出されたため、処理を中断しました。",
+        numericCode: "508",
+    },
+    loop_detected: {
+        name: "508 Loop Detected",
+        short: "無限ループが検出されました。",
+        long: "処理中に無限ループやリダイレクトの循環が検出されたため、処理を中断しました。",
+        numericCode: "508",
+    },
+    "810": {
+        name: "810 The Pillow is Too Big",
+        short: "枕が大きすぎます。",
+        long: "枕が大きすぎます。<br>安眠するためには適切なサイズの枕を選びましょう。",
+        numericCode: "810",
+    },
+    "925": {
+        name: "925 I'M BREAKING RULES!!!!",
+        short: "ルール破ってちょーワルなセンチュリーくん！！！！",
+        long: "このページは925とかいう見たこともないステータスコードを返すためのページだよ！！！！<br>curlコマンドとかで確認してみてね！！！！",
+        is925: true,
+        numericCode: "925",
+    },
+    rulebreak: {
+        name: "925 I'M BREAKING RULES!!!!",
+        short: "ルール破ってちょーワルなセンチュリーくん！！！！",
+        long: "このページは925とかいう見たこともないステータスコードを返すためのページだよ！！！！<br>curlコマンドとかで確認してみてね！！！！",
+        is925: true,
+        numericCode: "925",
+    },
+};
+
+const info = errorMap[code || "404"] || errorMap["404"];
+const numericCode = info.numericCode;
+const imgName = info.is925 ? "925" : numericCode;
+---
+
+<!doctype html>
+<html lang="ja">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-PZSJNQ3TX2"
+        ></script>
+        <script is:inline>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-PZSJNQ3TX2");
+        </script>
+        <link
+            rel="canonical"
+            href={`https://heiki.motchiy.com/${numericCode}.html`}
+        />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Heiki's Board - {info.name}</title>
+        <meta name="keywords" content="YouTube,掲示板,宣伝" />
+        <link rel="icon" href="/imgs/favicon.png" type="image/png" />
+
+        <meta property="og:title" content={`Heiki's Board - ${info.name}`} />
+        <meta property="og:description" content={info.short} />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:url"
+            content={`https://heiki.motchiy.com/${numericCode}.html`}
+        />
+        <meta
+            property="og:image"
+            content="https://heiki.motchiy.com/imgs/ogp.png"
+        />
+        <meta property="og:site_name" content="Heiki's Board" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`Heiki's Board - ${info.name}`} />
+        <meta name="twitter:description" content={info.short} />
+        <meta
+            name="twitter:image"
+            content="https://heiki.motchiy.com/imgs/ogp.png"
+        />
+
+        <link rel="stylesheet" href="/style.css" />
+        <link rel="stylesheet" href="/documents_style.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img
+                    src="https://heiki.motchiy.com/imgs/shatranj_icon.png"
+                    width="32"
+                    alt="シャトランジくんのアイコン"
+                />
+                <div style="opacity:.9">
+                    Heiki's Board - 超シンプルなYouTube宣伝掲示板！
+                </div>
+            </div>
+            <div class="header-links">
+                <a
+                    href="https://heiki.motchiy.com/"
+                    class="pc-mode header-link"
+                >
+                    掲示板トップ
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_banner.html"
+                    class="pc-mode header-link"
+                >
+                    バナー広告について
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_badges.html"
+                    class="pc-mode header-link"
+                >
+                    バッジについて
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_shatranj.html"
+                    class="pc-mode header-link"
+                >
+                    シャトランジくんについて
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/"
+                    class="sp-mode header-link"
+                >
+                    トップ
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_banner.html"
+                    class="sp-mode header-link"
+                >
+                    バナー広告
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_badges.html"
+                    class="sp-mode header-link"
+                >
+                    バッジ
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/about_shatranj.html"
+                    class="sp-mode header-link"
+                >
+                    シャトランジくん
+                </a>
+                <a
+                    href="https://heiki.motchiy.com/credits.html"
+                    class="header-link"
+                >
+                    クレジット
+                </a>
+            </div>
+        </header>
+        <main>
+            <div class="banner-row">
+                <a href="https://www.pixiv.net/users/64641168" target="_blank">
+                    <img
+                        src="/imgs/banner_heiki_pixiv.png"
+                        alt="さいほうへいきのpixivのバナー広告"
+                    />
+                </a>
+
+                <a
+                    href="https://kakuyomu.jp/works/16818792439776244514"
+                    target="_blank"
+                >
+                    <img
+                        src="/imgs/banner_takutan_spice.png"
+                        alt="『たくたんは香辛料を体に入れ込む』バナー広告"
+                    />
+                </a>
+
+                <a href="/about_banner.html" target="_blank">
+                    <img
+                        src="https://heiki.motchiy.com/imgs/empty_banner.png"
+                        alt="チャンネルバナー広告(広告掲載募集)"
+                    />
+                </a>
+            </div>
+            <hr />
+
+            <div class="documents-container">
+                <h1>{info.name}</h1>
+                <img
+                    src={`/imgs/${imgName}.jpg`}
+                    class="thumbnail"
+                    alt={
+                        info.is925
+                            ? "ルール破ってちょーワルなセンチュリーくん"
+                            : `${info.name}なシャトランジくん`
+                    }
+                />
+                <Fragment set:html={info.long} />
+                <p>
+                    <a href="/">掲示板トップページ</a>
+                    へ戻るか、なにかしらのバグである場合は
+                    <a href="https://x.com/leoved_kuru">僕のTwitter</a>
+                    へご連絡ください。
+                </p>
+            </div>
+        </main>
+        <footer>
+            <div class="info-grid">
+                <article class="info-card" tabindex="0">
+                    <div class="info-thumb">
+                        <img
+                            src="https://heiki.motchiy.com/imgs/heikikun.png"
+                            width="40"
+                            alt="さいほうへいきのアイコン"
+                        />
+                    </div>
+                    <div class="info-body">
+                        <div class="info-title">
+                            <a href="/credits_heiki.html">
+                                サイト運営: さいほうへいき
+                            </a>
+                        </div>
+                        <div class="info-text">
+                            この掲示板の制作者。フィードバック大歓迎。イラスト小説かいてます。
+                        </div>
+                    </div>
+                </article>
+
+                <article class="info-card" tabindex="0">
+                    <div class="info-thumb">
+                        <img
+                            src="https://heiki.motchiy.com/imgs/motchiy.png"
+                            width="40"
+                            alt="Motchiyのアイコン"
+                        />
+                    </div>
+                    <div class="info-body">
+                        <div class="info-title">
+                            <a href="/credits_motchiy.html">
+                                サーバー運営: Motchiy
+                            </a>
+                        </div>
+                        <div class="info-text">
+                            サーバーの運営者。接続の問題があればこのひとを荒らしてください。
+                        </div>
+                    </div>
+                </article>
+
+                <article class="info-card" tabindex="0">
+                    <div class="info-thumb">📠</div>
+                    <div class="info-body">
+                        <div class="info-title">コンタクト</div>
+                        <div class="info-text">
+                            <a
+                                href="https://x.com/leoved_kuru"
+                                class="link-inline"
+                            >
+                                さいほうへいきのTwitter
+                            </a>
+                            <hr />
+                            <a
+                                href="https://x.com/motchiy_tuti"
+                                class="link-inline"
+                            >
+                                MotchiyのTwitter
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="info-card" tabindex="0">
+                    <div class="info-thumb">🔗</div>
+                    <div class="info-body">
+                        <div class="info-title">関連リンク</div>
+                        <div class="info-text">
+                            <a
+                                href="https://www.youtube.com/@saihou-heiki"
+                                class="link-inline"
+                            >
+                                さいほうへいきのYouTube
+                            </a>
+                            <hr />
+                            <a
+                                class="link-inline"
+                                href="https://www.youtube.com/@motchiy_tuti"
+                            >
+                                MotchiyのYouTube
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="share-buttons">
+                <a class="share-btn twitter" target="_blank" rel="noopener">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg"
+                        class="icon"
+                        alt="Twitterアイコン"
+                    />
+                    Twitterで共有
+                </a>
+
+                <a class="share-btn facebook" target="_blank" rel="noopener">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+                        class="icon"
+                        alt="Facebookアイコン"
+                    />
+                    Facebookで共有
+                </a>
+
+                <a class="share-btn line" target="_blank" rel="noopener">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/line.svg"
+                        class="icon"
+                        alt="LINEアイコン"
+                    />
+                    LINEで共有
+                </a>
+            </div>
+
+            <div style="margin-top:18px;color:#555;font-size:13px;text-align:center">
+                Copyright (C) 2025-2026 さいほうへいき
+            </div>
+        </footer>
+        <script is:inline src="/sharebtn.js"></script>
+    </body>
+</html>

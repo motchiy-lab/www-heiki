@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<?php include __DIR__ . "/../ga4.php" ?>
+<link rel="canonical" href="https://heiki.motchiy.com/status_scripts/" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Heiki's Board - ステータスコードじっけんラボ</title>
+<meta name="description" content="いろいろなステータスコードを返すことができるアドレスのまとめです。">
+<meta name="keywords" content="HTML,PHP,Status Code">
+<link rel="icon" href="imgs/favicon.png" type="image/png">
+
+<head prefix="og: https://ogp.me/ns#">
+
+<meta property="og:title" content="Heiki's Board - ステータスコードじっけんラボ" />
+<meta property="og:description" content="いろいろなステータスコードを返すことができるアドレスのまとめです。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://heiki.motchiy.com/status_scripts/" />
+<meta property="og:image" content="https://heiki.motchiy.com/imgs/ogp.png" />
+<meta property="og:site_name" content="Heiki's Board" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Heiki's Board - ステータスコードじっけんラボ" />
+<meta name="twitter:description" content="いろいろなステータスコードを返すことができるアドレスのまとめです。" />
+<meta name="twitter:image" content="https://heiki.motchiy.com/imgs/ogp.png" />
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../documents_style.css">
+
+<?php include __DIR__ . "/head.php"; ?>
+</head>
+<body>
+<?php include __DIR__ . "/../header.php"; ?>
+  <hr>
+
+  <div class="documents-container">
+  <h1>ステータスコードじっけんラボ！</h1>
+
+  <p>
+    次のリストに並んでいるページにアクセスすると、いろいろなHTTPステータスコードが返ってきます。<br>
+    DevToolsやcurlで確認してみよう！<br>
+    あんまり使う機会は無いかもしれませんが、プログラムのステータスコードのテストに用いても構いません。
+  </p>
+  <p>
+    <ul>
+      <li><b><a href="https://heiki.motchiy.com/unauthorized">401 Unauthorized</a></b></li>
+      <li><b><a href="https://heiki.motchiy.com/forbidden">403 Forbidden</a></b></li>
+      <li><b><a href="https://heiki.motchiy.com/request_timeout">408 Request Timeout.</a></b></li>
+      <li><b><a href="https://heiki.motchiy.com/teapot">418 I'm a teapot.</a></b></li>
+      <li><b><a href="https://heiki.motchiy.com/unavailable_for_legal_reasons">451 Unavailable For Legal Reasons</a></b></li>
+      <li><b><a href="https://heiki.motchiy.com/insufficient_storage">507 Insufficient Storage</a></b></li>
+      <li><b><a href="https://heiki.motchiy.com/loop_detected">508 Loop Detected</a></b></li>
+      <li><b><a href="https://heiki.motchiy.com/rulebreak">925 I'M BREAKING RULES!!!!</a></b></li>
+    </ul>
+  </p>
+
+  </div>
+</main>
+<?php include __DIR__ . "/../footer.php"; ?>
+</body>
+</html>
