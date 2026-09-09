@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "www-heiki-frontend",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -18,5 +18,8 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1"
   }
 }
