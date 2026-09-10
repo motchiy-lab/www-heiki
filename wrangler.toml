@@ -10,7 +10,11 @@ compatibility_flags = [
 
 [assets]
 binding = "ASSETS"
+<<<<<<< HEAD
 directory = "./dist/client"
+=======
+directory = "./dist"
+>>>>>>> 386634d247953e6c44ce6689ed0a559e4372efe5
 
 [[d1_databases]]
 binding = "DB"
