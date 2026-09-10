@@ -12,6 +12,7 @@ compatibility_flags = [
 binding = "ASSETS"
 directory = "./dist/client"
 
+
 [[d1_databases]]
 binding = "DB"
 database_name = "www-heiki"
