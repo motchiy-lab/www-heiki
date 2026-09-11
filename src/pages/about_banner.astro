@@ -1,381 +1,73 @@
 ---
+import DocumentLayout from "../layouts/DocumentLayout.astro";
 ---
 
-<!doctype html>
-<html lang="ja">
-    <head>
-        <!-- Google tag (gtag.js) -->
-        <script
-            is:inline
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-PZSJNQ3TX2"
-        ></script>
-        <script is:inline>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-
-            gtag("config", "G-PZSJNQ3TX2");
-        </script>
-        <link
-            rel="canonical"
-            href="https://heiki.motchiy.com/about_banner.html"
-        />
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>Heiki's Board - チャンネル広告の出稿について</title>
-        <meta
-            name="description"
-            content="Heiki's BoardではYouTube動画の宣伝のほか、コンスタントに長期間掲載されるチャンネル等のバナーも掲載できます！"
-        />
-        <meta name="keywords" content="YouTube,掲示板,宣伝" />
-        <link rel="icon" href="/imgs/favicon.png" type="image/png" />
-
-        <meta
-            property="og:title"
-            content="Heiki's Board - チャンネル広告の出稿について"
-        />
-        <meta
-            property="og:description"
-            content="Heiki's Boardにおいての、ページ上部のバナーを利用したチャンネル広告のご案内です。"
-        />
-        <meta property="og:type" content="website" />
-        <meta
-            property="og:url"
-            content="https://heiki.motchiy.com/about_banner.html"
-        />
-        <meta
-            property="og:image"
-            content="https://heiki.motchiy.com/imgs/ogp.png"
-        />
-        <meta property="og:site_name" content="Heiki's Board" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-            name="twitter:title"
-            content="Heiki's Board - チャンネル広告の出稿について"
-        />
-        <meta
-            name="twitter:description"
-            content="Heiki's Boardにおいての、ページ上部のバナーを利用したチャンネル広告のご案内です。"
-        />
-        <meta
-            name="twitter:image"
-            content="https://heiki.motchiy.com/imgs/ogp.png"
-        />
-
-        <link rel="stylesheet" href="/style.css" />
-        <link rel="stylesheet" href="/documents_style.css" />
-
-        <script is:inline type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "掲示板トップ",
-                        "item": "https://heiki.motchiy.com/"
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "チャンネルバナー広告について",
-                        "item": "https://heiki.motchiy.com/about_badges.html"
-                    }
-                ]
-            }
-        </script>
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <img
-                    src="https://heiki.motchiy.com/imgs/shatranj_icon.png"
-                    width="32"
-                    alt="シャトランジくんのアイコン"
-                />
-                <div style="opacity:.9">
-                    Heiki's Board - 超シンプルなYouTube宣伝掲示板！
-                </div>
-            </div>
-            <div class="header-links">
-                <a
-                    href="https://heiki.motchiy.com/"
-                    class="pc-mode header-link"
-                >
-                    掲示板トップ
-                </a>
-                <a
-                    href="https://heiki.motchiy.com/about_banner.html"
-                    class="pc-mode header-link"
-                >
-                    バナー広告について
-                </a>
-                <a
-                    href="https://heiki.motchiy.com/about_badges.html"
-                    class="pc-mode header-link"
-                >
-                    バッジについて
-                </a>
-                <a
-                    href="https://heiki.motchiy.com/about_shatranj.html"
-                    class="pc-mode header-link"
-                >
-                    シャトランジくんについて
-                </a>
-                <a
-                    href="https://heiki.motchiy.com/"
-                    class="sp-mode header-link"
-                >
-                    トップ
-                </a>
-                <a
-                    href="https://heiki.motchiy.com/about_banner.html"
-                    class="sp-mode header-link"
-                >
-                    バナー広告
-                </a>
-                <a
-                    href="https://heiki.motchiy.com/about_badges.html"
-                    class="sp-mode header-link"
-                >
-                    バッジ
-                </a>
-                <a
-                    href="https://heiki.motchiy.com/about_shatranj.html"
-                    class="sp-mode header-link"
-                >
-                    シャトランジくん
-                </a>
-                <a
-                    href="https://heiki.motchiy.com/credits.html"
-                    class="header-link"
-                >
-                    クレジット
-                </a>
-            </div>
-        </header>
-        <main>
-            <div class="banner-row">
-                <a href="https://www.pixiv.net/users/64641168" target="_blank">
-                    <img
-                        src="/imgs/banner_heiki_pixiv.png"
-                        alt="さいほうへいきのpixivのバナー広告"
-                    />
-                </a>
-
-                <a
-                    href="https://kakuyomu.jp/works/16818792439776244514"
-                    target="_blank"
-                >
-                    <img
-                        src="/imgs/banner_takutan_spice.png"
-                        alt="『たくたんは香辛料を体に入れ込む』バナー広告"
-                    />
-                </a>
-
-                <a href="/about_banner.html" target="_blank">
-                    <img
-                        src="https://heiki.motchiy.com/imgs/empty_banner.png"
-                        alt="チャンネルバナー広告(広告掲載募集)"
-                    />
-                </a>
-            </div>
-            <hr />
-
+<DocumentLayout
+    title="Heiki's Board - チャンネル広告の出稿について"
+    description="Heiki's BoardではYouTube動画の宣伝のほか、コンスタントに長期間掲載されるチャンネル等のバナーも掲載できます！">
             <div class="documents-container">
-                <h1>チャンネルバナー広告の出稿について</h1>
+<h1>チャンネルバナー広告について</h1>
 
-                <div class="toc-box">
-                    <p class="toc-title">この記事の目次</p>
-                    <ul class="toc-list">
-                        <li>
-                            <a href="#overview">1. 概要</a>
-                        </li>
-                        <li>
-                            <a href="#place">2. 掲載場所</a>
-                        </li>
-                        <li>
-                            <a href="#howto">3. 出稿方法・条件</a>
-                        </li>
-                        <li>
-                            <a href="#caution">4. 注意事項</a>
-                        </li>
-                    </ul>
-                </div>
+  <div class="toc-box">
+    <p class="toc-title">この記事の目次</p>
+    <ul class="toc-list">
+    <li><a href="#main">1. 大雑把な説明</a></li>
+    <li><a href="#contents">2. 掲載できる内容</a></li>
+    <li><a href="#needs">3. 掲載に必要なもの</a></li>
+    <li><a href="#time">4. 掲載期間</a></li>
+    <li><a href="#questions">5. ご質問</a></li>
+    </ul>
+  </div>
 
-                <h2 id="overview">概要</h2>
-                <p>
-                    Heiki's Boardでは、ページ上部に常時掲載される
-                    <b>バナー広告スペース</b>を用意しています。
-                    <br />
-                    通常の動画投稿枠とは異なり、コンスタントに長期間ご自身のチャンネルや作品をアピールすることが可能です！
-                </p>
-                <p>
-                    現在、バナー広告枠の掲載希望者を随時募集しています。ご興味のある方は下記の手順をご確認の上、お気軽にご連絡ください。
-                </p>
+  <h2 id="main">大雑把な説明</h2>
+  <p>
+    Heiki's Boardでは、URLを打ち込むことで行う動画宣伝以外にも、バナーを利用した固定広告を出すことができます。<br>
+    このページ上部にもある、クリックすることでチャンネル等にリンクする画像バナーです。<br>
+    流動性のある動画とは異なり、比較的長い期間にわたって他の利用者の目につきやすくなります！
+  </p>
+  <p>
+    これらの画像を掲載したい場合、ぜひ<a href="https://x.com/leoved_kuru">作者のTwitter</a>のDMまでご依頼をお寄せください。<br>
+    なお、ご依頼の際は以下の点をお伝えください。
+  </p>
+  <ul>
+    <li><b>リンク先のURL</b></li>
+    <li><b>バナー画像</b>（こちらで製作することもできますが時間がかかるうえ、クオリティはお察しなので自作をお勧めします）</li>
+  </ul><br>
 
-                <h2 id="place">掲載場所</h2>
-                <p>
-                    すべてのページの最上部（ヘッダー直下）に横並びで表示される3つのバナー枠のうち、右側の空きスペース（または指定枠）に掲載されます。
-                    <br />
-                    PC・スマートフォン双方の表示に対応しています。
-                </p>
+  <h2 id="contents">掲載できる内容</h2>
+  <p>
+    一応『YouTubeチャンネルの宣伝』とはしていますが、<b>YouTube以外のサービスでも掲載は可能です</b>。<br>
+    ご自身のニコニコ動画やTwitchチャンネル、なろうの小説やブログなどでも大歓迎です！<br>
+    ぜひ、お気軽にどうぞ。
+  </p>
+  <p>
+    ただし、犯罪を推奨するようなコンテンツ、見た人を不快にさせるようなコンテンツなど、一般的に見てまずいものは掲載できません。<br>
+    また、作者やサーバー管理者の裁量で掲載を拒否、中止することもあります。まあよっぽどのことがなければ大丈夫でしょうけど。<br>
+  </p><br>
 
-                <h2 id="howto">出稿方法・条件</h2>
-                <p>
-                    掲載をご希望される場合は、以下の内容を添えて作者の
-                    <a href="https://x.com/leoved_kuru">
-                        Kuru⁵のTwitter(X)のDM
-                    </a>
-                    までご連絡ください。
-                </p>
-                <ul>
-                    <li>
-                        掲載したいバナー画像（推奨サイズ:
-                        適宜調整しますのでご相談ください）
-                    </li>
-                    <li>
-                        リンク先のURL（YouTubeチャンネル、作品ページ、SNSなど）
-                    </li>
-                    <li>簡単なチャンネルまたは作品のご紹介</li>
-                </ul>
-                <p>
-                    ※
-                    現在、料金等はいただいておりません（無料枠または相互宣伝等で対応中）。お気軽にご相談ください。
-                </p>
+  <h2 id="needs">掲載に必要なもの</h2>
+  <p>
+    先ほど挙げたとおり、URLおよびバナー画像をご用意ください。
+  </p>
+  <p>
+    作者が趣味で運営しているものですし、クオリティもたいがいなので、<b>金銭等の報酬は一切不要</b>です。というか払うって言われてもどうすればいいか分からん。<br>
+  </p><br>
 
-                <h2 id="caution">注意事項</h2>
-                <p>
-                    公序良俗に反する内容や、過激な表現、YouTubeの規約に違反するチャンネルの広告はお断りする場合があります。
-                    <br />
-                    また、枠の埋まり具合によっては掲載までにお時間をいただくか、お待ちいただく場合がございますのでご了承ください。
-                </p>
-            </div>
-        </main>
-        <footer>
-            <div class="info-grid">
-                <article class="info-card" tabindex="0">
-                    <div class="info-thumb">
-                        <img
-                            src="https://heiki.motchiy.com/imgs/heikikun.png"
-                            width="40"
-                            alt="さいほうへいきのアイコン"
-                        />
-                    </div>
-                    <div class="info-body">
-                        <div class="info-title">
-                            <a href="/credits_heiki.html">
-                                サイト運営: さいほうへいき
-                            </a>
-                        </div>
-                        <div class="info-text">
-                            この掲示板の制作者。フィードバック大歓迎。イラスト小説かいてます。
-                        </div>
-                    </div>
-                </article>
+  <h2 id="time">掲載期間</h2>
+  <p>
+    期間についての依頼があっても、<b>どれだけの期間掲載するかは保証はできません</b>。<br>
+    新しい広告の依頼がない限りひっぺがすようなことはないでしょうが、『一年間掲載して』などとお伝えいただいても添えない可能性があります。
+  </p>
+  <p>
+    またハロウィンやクリスマス等のイベントに合わせた、<b>期間限定または短期間での出稿についても保証は致しかねます</b>。<br>
+    出来る限り対応はしますが、管理者の多忙につき、数日程度のずれが起こる可能性もあります。<br>
+    ご理解いただけますと幸いです。
+  </p><br>
 
-                <article class="info-card" tabindex="0">
-                    <div class="info-thumb">
-                        <img
-                            src="https://heiki.motchiy.com/imgs/motchiy.png"
-                            width="40"
-                            alt="Motchiyのアイコン"
-                        />
-                    </div>
-                    <div class="info-body">
-                        <div class="info-title">
-                            <a href="/credits_motchiy.html">
-                                サーバー運営: Motchiy
-                            </a>
-                        </div>
-                        <div class="info-text">
-                            サーバーの運営者。接続の問題があればこのひとを荒らしてください。
-                        </div>
-                    </div>
-                </article>
-
-                <article class="info-card" tabindex="0">
-                    <div class="info-thumb">📠</div>
-                    <div class="info-body">
-                        <div class="info-title">コンタクト</div>
-                        <div class="info-text">
-                            <a
-                                href="https://x.com/leoved_kuru"
-                                class="link-inline"
-                            >
-                                さいほうへいきのTwitter
-                            </a>
-                            <hr />
-                            <a
-                                href="https://x.com/motchiy_tuti"
-                                class="link-inline"
-                            >
-                                MotchiyのTwitter
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="info-card" tabindex="0">
-                    <div class="info-thumb">🔗</div>
-                    <div class="info-body">
-                        <div class="info-title">関連リンク</div>
-                        <div class="info-text">
-                            <a
-                                href="https://www.youtube.com/@saihou-heiki"
-                                class="link-inline"
-                            >
-                                さいほうへいきのYouTube
-                            </a>
-                            <hr />
-                            <a
-                                class="link-inline"
-                                href="https://www.youtube.com/@motchiy_tuti"
-                            >
-                                MotchiyのYouTube
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="share-buttons">
-                <a class="share-btn twitter" target="_blank" rel="noopener">
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg"
-                        class="icon"
-                        alt="Twitterアイコン"
-                    />
-                    Twitterで共有
-                </a>
-
-                <a class="share-btn facebook" target="_blank" rel="noopener">
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
-                        class="icon"
-                        alt="Facebookアイコン"
-                    />
-                    Facebookで共有
-                </a>
-
-                <a class="share-btn line" target="_blank" rel="noopener">
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/line.svg"
-                        class="icon"
-                        alt="LINEアイコン"
-                    />
-                    LINEで共有
-                </a>
-            </div>
-
-            <div style="margin-top:18px;color:#555;font-size:13px;text-align:center">
-                Copyright (C) 2025-2026 さいほうへいき
-            </div>
-        </footer>
-        <script is:inline src="/sharebtn.js"></script>
-    </body>
-</html>
+  <h2 id="questions">ご質問</h2>
+  <p>
+    ご不明な点がありましたら、<a href="https://x.com/leoved_kuru">作者のTwitter</a>もしくは<a href="https://x.com/motchiy_tuti">サーバー管理者のTwitter</a>にご連絡ください。<br>
+    返答には時間がかかる可能性があります。また、サーバー管理者はサービス内容についてはお答えできかねる場合があります。
+  <p>
+  </div>
+</DocumentLayout>
