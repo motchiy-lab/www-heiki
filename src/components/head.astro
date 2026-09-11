@@ -1,0 +1,58 @@
+---
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/imgs/ogp.png", Astro.site);
+---
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script
+        is:inline
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-PZSJNQ3TX2"
+    ></script>
+
+    <script is:inline>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag("js", new Date());
+        gtag("config", "G-PZSJNQ3TX2");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>{title}</title>
+
+    <meta name="description" content={description} />
+    <meta name="keywords" content="YouTube,掲示板,宣伝" />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/imgs/favicon.png" type="image/png" />
+
+    <!-- OGP -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Heiki's Board" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/documents_style.css" />
+</head
