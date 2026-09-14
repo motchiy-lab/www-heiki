@@ -5,6 +5,8 @@ export const prerender = true;
 
 export async function getStaticPaths() {
     const codes = [
+        "100",
+        "200",
         "400",
         "401",
         "402",
@@ -56,6 +58,18 @@ const errorMap: Record<
         numericCode: string;
     }
 > = {
+    "100": {
+        name: "100 Continue",
+        short: "リクエストの一部が受信され、拒否されませんでした。続けてください。",
+        long: "リクエストの一部が受信され、拒否されませんでした。続けてください。",
+        numericCode: "100",
+    },
+    "200": {
+        name: "200 OK",
+        short: "リクエストの処理に正常に成功しました。やったね。",
+        long: "リクエストの処理に正常に成功しました。やったね。",
+        numericCode: "200",
+    },
     "400": {
         name: "400 Bad Request",
         short: "不正なリクエストです。",
