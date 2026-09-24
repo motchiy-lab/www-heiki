@@ -26,6 +26,7 @@ export async function getStaticPaths() {
         "416",
         "417",
         "418",
+        "423",
         "429",
         "451",
         "500",
@@ -212,6 +213,30 @@ const errorMap: Record<
         short: "私はティーポットです。",
         long: "私はティーポットです。<br>残念ながらこのサイトでコーヒーを淹れることはできません。",
         numericCode: "418",
+    },
+    "421": {
+        name: "421 Misdirected Request",
+        short: "誤ったサーバーへリクエストが送信されました。",
+        long: "正常な対応が行えないサーバーへリクエストが送信され、エラーが発生しました。",
+        numericCode: "421",
+    },
+    "422": {
+        name: "422 Unprocessable Content",
+        short: "送信された内容を処理できません。",
+        long: "送信された内容は正常な形式を取っていますが、処理を行えません。",
+        numericCode: "422",
+    },
+    "423": {
+        name: "423 Locked",
+        short: "リソースがロックされています。",
+        long: "要求したリソースは現在ロックされており、アクセスや変更が不可能な状況になっています。",
+        numericCode: "423",
+    },
+    "424": {
+        name: "424 Failed Dependency",
+        short: "依存関係にあるリクエストが失敗し、処理ができません。",
+        long: "ちくしょう！　送信されたリクエストの依存先に問題が起きたため、台無しになりました。お前はいつもそうだ。誰もお前を愛さない。",
+        numericCode: "424",
     },
     "429": {
         name: "429 Too Many Requests",
