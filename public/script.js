@@ -45,31 +45,54 @@ function makeCard(entry) {
 
 function medalImage(count) {
   let badge = 'leaf_1';
-  if (count == 7 || count == 77 || count == 777)
+  if (count == 7)
+    badge = 'lucky_green';
+  else if (count == 77)
     badge = 'lucky';
-  if (count == 22 || count == 222)
+  else if (count == 777)
+    badge = 'lucky_red';
+  else if (count == 7777)
+    badge = 'lucky_galaxy';
+  else if (count == 22 || count == 222)
     badge = 'cat';
-  if (count == 308)
-    badge = 'takutan';
-  if (count == 128)
+  else if (count == 35)
+    badge = 'coral';
+  else if (count == 69)
+    badge = 'marugame';
+  else if (count == 76)
+    badge = 'geodetail';
+  else if (count == 101)
+    badge = 'saikousai';
+  else if (count == 128)
     badge = 'motchiy_badge';
-  if (count == 33550336)
+  else if (count == 131)
+    badge = 'blue_moon';
+  else if (count == 308)
+    badge = 'takutan';
+  else if (count == 527)
+    badge = 'wilburd';
+  else if (count == 629)
+    badge = 'bonfire';
+  else if (count == 819)
+    badge = 'faigeo';
+  else if (count == 33550336)
     badge = 'phainon';
-  if (count >= 1000)
+  
+  else if (count >= 1000)
     badge = 'blackmedal';
-  if (count >= 300)
+  else if (count >= 300)
     badge = 'goldmedal';
-  if (count >= 100)
+  else if (count >= 100)
     badge = 'silvermedal';
-  if (count >= 50)
+  else if (count >= 50)
     badge = 'bronzemedal';
-  if (count >= 10)
+  else if (count >= 10)
     badge = 'twinkle';
-  if (count >= 5)
+  else if (count >= 5)
     badge = 'leaf_3';
-  if (count >= 3)
+  else if (count >= 3)
     badge = 'leaf_2';
-  if (count >= 1)
+  else if (count >= 1)
     badge = 'leaf_1';
   return '<img src="imgs/' + badge + '.png" class="medal-icon" width="48" height="48">';
 }
