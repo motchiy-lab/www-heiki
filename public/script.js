@@ -44,33 +44,34 @@ function makeCard(entry) {
 }
 
 function medalImage(count) {
+  let badge = 'leaf_1';
   if (count == 7 || count == 77 || count == 777)
-    return `<img src="imgs/lucky.png" class="medal-icon" width="36" height="36">`;
+    badge = 'lucky';
   if (count == 22 || count == 222)
-    return `<img src="imgs/cat.png" class="medal-icon" width="36" height="36">`;
+    badge = 'cat';
   if (count == 308)
-    return `<img src="imgs/takutan.png" class="medal-icon" width="36" height="36">`;
+    badge = 'takutan';
   if (count == 128)
-    return `<img src="imgs/motchiy_badge.png" class="medal-icon" width="36" height="36">`;
+    badge = 'motchiy_badge';
   if (count == 33550336)
-    return `<img src="imgs/phainon.png" class="medal-icon" width="36" height="36">`;
+    badge = 'phainon';
   if (count >= 1000)
-    return `<img src="imgs/blackmedal.png" class="medal-icon" width="36" height="36">`;
+    badge = 'blackmedal';
   if (count >= 300)
-    return `<img src="imgs/goldmedal.png" class="medal-icon" width="36" height="36">`;
+    badge = 'goldmedal';
   if (count >= 100)
-    return `<img src="imgs/silvermedal.png" class="medal-icon" width="36" height="36">`;
+    badge = 'silvermedal';
   if (count >= 50)
-    return `<img src="imgs/bronzemedal.png" class="medal-icon" width="36" height="36">`;
+    badge = 'bronzemedal';
   if (count >= 10)
-    return `<img src="imgs/twinkle.png" class="medal-icon" width="36" height="36">`;
+    badge = 'twinkle';
   if (count >= 5)
-    return `<img src="imgs/leaf_3.png" class="medal-icon" width="36" height="36">`;
+    badge = 'leaf_3';
   if (count >= 3)
-    return `<img src="imgs/leaf_2.png" class="medal-icon" width="36" height="36">`;
+    badge = 'leaf_2';
   if (count >= 1)
-    return `<img src="imgs/leaf_1.png" class="medal-icon" width="36" height="36">`;
-  return '';
+    badge = 'leaf_1';
+  return '<img src="imgs/' + badge + '.png" class="medal-icon" width="48" height="48">';
 }
 
 function channelClass(count) {
