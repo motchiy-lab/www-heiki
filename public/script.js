@@ -51,7 +51,7 @@ function medalImage(count) {
   if (count == 308)
     return `<img src="imgs/takutan.png" class="medal-icon" width="36" height="36">`;
   if (count == 128)
-    return `<img src="imgs/motchiypng" class="medal-icon" width="36" height="36">`;
+    return `<img src="imgs/motchiy_badge.png" class="medal-icon" width="36" height="36">`;
   if (count == 33550336)
     return `<img src="imgs/phainon.png" class="medal-icon" width="36" height="36">`;
   if (count >= 1000)
