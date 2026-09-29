@@ -151,6 +151,7 @@ export const errors = [
     },
 
     // 5xx Server Error
+    // 5xx Server Error
     {
         category: "normal",
         code: "500",
@@ -205,6 +206,51 @@ export const errors = [
         category: "normal",
         code: "511",
         name: "Network Authentication Required",
+    },
+
+    // =========================
+    // Cloudflare 5xx
+    // =========================
+
+    {
+        category: "normal",
+        code: "520",
+        name: "Web Server Returns an Unknown Error",
+    },
+    {
+        category: "normal",
+        code: "521",
+        name: "Web Server Is Down",
+    },
+    {
+        category: "normal",
+        code: "522",
+        name: "Connection Timed Out",
+    },
+    {
+        category: "normal",
+        code: "523",
+        name: "Origin Is Unreachable",
+    },
+    {
+        category: "normal",
+        code: "524",
+        name: "A Timeout Occurred",
+    },
+    {
+        category: "normal",
+        code: "525",
+        name: "SSL Handshake Failed",
+    },
+    {
+        category: "normal",
+        code: "526",
+        name: "Invalid SSL Certificate",
+    },
+    {
+        category: "normal",
+        code: "530",
+        name: "Origin DNS Error",
     },
 
     // 独自エラー
