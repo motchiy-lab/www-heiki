@@ -1,4 +1,9 @@
 export const errors = [
+    // =========================
+    // 通常のエラーページ
+    // =========================
+
+    // 4xx Client Error
     {
         category: "normal",
         code: "400",
@@ -96,14 +101,56 @@ export const errors = [
     },
     {
         category: "normal",
+        code: "421",
+        name: "Misdirected Request",
+    },
+    {
+        category: "normal",
+        code: "422",
+        name: "Unprocessable Content",
+    },
+    {
+        category: "normal",
+        code: "423",
+        name: "Locked",
+    },
+    {
+        category: "normal",
+        code: "424",
+        name: "Failed Dependency",
+    },
+    {
+        category: "normal",
+        code: "425",
+        name: "Too Early",
+    },
+    {
+        category: "normal",
+        code: "426",
+        name: "Upgrade Required",
+    },
+    {
+        category: "normal",
+        code: "428",
+        name: "Precondition Required",
+    },
+    {
+        category: "normal",
         code: "429",
         name: "Too Many Requests",
+    },
+    {
+        category: "normal",
+        code: "431",
+        name: "Request Header Fields Too Large",
     },
     {
         category: "normal",
         code: "451",
         name: "Unavailable For Legal Reasons",
     },
+
+    // 5xx Server Error
     {
         category: "normal",
         code: "500",
@@ -111,8 +158,33 @@ export const errors = [
     },
     {
         category: "normal",
+        code: "501",
+        name: "Not Implemented",
+    },
+    {
+        category: "normal",
+        code: "502",
+        name: "Bad Gateway",
+    },
+    {
+        category: "normal",
         code: "503",
         name: "Service Unavailable",
+    },
+    {
+        category: "normal",
+        code: "504",
+        name: "Gateway Timeout",
+    },
+    {
+        category: "normal",
+        code: "505",
+        name: "HTTP Version Not Supported",
+    },
+    {
+        category: "normal",
+        code: "506",
+        name: "Variant Also Negotiates",
     },
     {
         category: "normal",
@@ -126,8 +198,20 @@ export const errors = [
     },
     {
         category: "normal",
+        code: "510",
+        name: "Not Extended",
+    },
+    {
+        category: "normal",
+        code: "511",
+        name: "Network Authentication Required",
+    },
+
+    // 独自エラー
+    {
+        category: "normal",
         code: "810",
-        name: "The Pillow is Too Big",
+        name: "Pillow Too Big",
     },
     {
         category: "normal",
@@ -135,7 +219,11 @@ export const errors = [
         name: "I'M BREAKING RULES!!!!",
     },
 
+
+    // =========================
     // yt-dlp
+    // =========================
+
     {
         category: "ytdlp",
         code: "400",
