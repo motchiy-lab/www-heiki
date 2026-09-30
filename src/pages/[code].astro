@@ -76,6 +76,8 @@ export async function getStaticPaths() {
         "internal_server_error",
         "insufficient_storage",
         "loop_detected",
+        "returns_an_unknown_error",
+        "web_server_is_down",
 
         // コード返したい
         "pillow_too_big",
@@ -411,7 +413,19 @@ const errorMap: Record<
         long: "<b>Cloudflareがオリジンサーバーから空、予期しない、または解釈できない応答を受け取ったため、リクエストを処理できませんでした。</b><br>オリジンサーバーのクラッシュや設定不備、過剰なCookieなどが原因となる場合があります。<br>一時的な問題である可能性もあるため、しばらく時間を置いてから再度アクセスしてみてください。",
         numericCode: "520",
     },
+    "returns_an_unknown_error": {
+        name: "520 Web Server Returns an Unknown Error",
+        short: "Webサーバーから不明なエラーが返されました。",
+        long: "<b>Cloudflareがオリジンサーバーから空、予期しない、または解釈できない応答を受け取ったため、リクエストを処理できませんでした。</b><br>オリジンサーバーのクラッシュや設定不備、過剰なCookieなどが原因となる場合があります。<br>一時的な問題である可能性もあるため、しばらく時間を置いてから再度アクセスしてみてください。",
+        numericCode: "520",
+    },
     "521": {
+        name: "521 Web Server Is Down",
+        short: "Webサーバーが接続を拒否しました。",
+        long: "<b>Cloudflareからオリジンサーバーへの接続が拒否されたため、リクエストを処理できませんでした。</b><br>オリジンサーバーが停止しているか、ファイアウォールなどによってCloudflareからの接続がブロックされている可能性があります。<br>サーバーが稼働しているか、Cloudflareからの接続が許可されているか確認してください。",
+        numericCode: "521",
+    },
+    "web_server_is_down": {
         name: "521 Web Server Is Down",
         short: "Webサーバーが接続を拒否しました。",
         long: "<b>Cloudflareからオリジンサーバーへの接続が拒否されたため、リクエストを処理できませんでした。</b><br>オリジンサーバーが停止しているか、ファイアウォールなどによってCloudflareからの接続がブロックされている可能性があります。<br>サーバーが稼働しているか、Cloudflareからの接続が許可されているか確認してください。",
