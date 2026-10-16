@@ -1,20 +1,20 @@
-<header>
+<header style="flex-direction:column;">
     <div class="logo">
-        <img
-            src="/imgs/shatranj_icon.png"
-            width="32"
-            height="32"
-            alt="シャトランジくんのアイコン"
-        />
-        <div style="opacity:.9">
+        <img src="/imgs/shatranj_icon.png" width="32" height="32" alt="シャトランジくんのアイコン" />
+        <div class="pc-mode" style="opacity:.9;">
             Heiki's Board - 超シンプルなYouTube宣伝掲示板！
         </div>
+        <div class="sp-mode" style="opacity:.9;">
+            Heiki's Board!
+        </div>
+        <div class="add">
+            <input id="videoUrl" type="text" placeholder="YouTube動画のURL(通常・ショート・ライブ可)" style="width: 500px;" />
+            <button id="addBtn">追加！</button>
+            <div id="status"></div>
+        </div>
     </div>
-
+    <br />
     <div class="header-links">
-        <a href="/" class="pc-mode header-link">
-            掲示板トップ
-        </a>
         <a href="/about_banner.html" class="pc-mode header-link">
             バナー広告について
         </a>
@@ -23,10 +23,6 @@
         </a>
         <a href="/about_shatranj.html" class="pc-mode header-link">
             シャトランジくんについて
-        </a>
-
-        <a href="/" class="sp-mode header-link">
-            トップ
         </a>
         <a href="/about_banner.html" class="sp-mode header-link">
             バナー広告
