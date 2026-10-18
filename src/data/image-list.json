@@ -1,0 +1,330 @@
+{
+  "badges": [
+    {
+      "name": "銅メダル",
+      "src": "bronzemedal.png",
+      "width": 64,
+      "alt": "銅メダルのバッジ"
+    },
+    {
+      "name": "銀メダル",
+      "src": "silvermedal.png",
+      "width": 64,
+      "alt": "銀メダルのバッジ"
+    },
+    {
+      "name": "金メダル",
+      "src": "goldmedal.png",
+      "width": 64,
+      "alt": "金メダルのバッジ"
+    },
+    {
+      "name": "黒メダル",
+      "src": "blackmedal.png",
+      "width": 64,
+      "alt": "黒メダルのバッジ"
+    },
+    {
+      "name": "双葉 (1)",
+      "src": "leaf_1.png",
+      "width": 64,
+      "alt": "双葉のバッジその1"
+    },
+    {
+      "name": "双葉 (2)",
+      "src": "leaf_2.png",
+      "width": 64,
+      "alt": "双葉のバッジその2"
+    },
+    {
+      "name": "双葉 (3)",
+      "src": "leaf_3.png",
+      "width": 64,
+      "alt": "双葉のバッジその3"
+    },
+    {
+      "name": "キラキラ",
+      "src": "twinkle.png",
+      "width": 64,
+      "alt": "キラキラのバッジ"
+    },
+    {
+      "name": "四つ葉 (Unused)",
+      "src": "lucky_green.png",
+      "width": 64,
+      "alt": "四つ葉のバッジ"
+    },
+    {
+      "name": "赤色の四つ葉 (Unused)",
+      "src": "lucky_red.png",
+      "width": 64,
+      "alt": "赤色の四つ葉のバッジ"
+    },
+    {
+      "name": "金色の四つ葉",
+      "src": "lucky.png",
+      "width": 64,
+      "alt": "金色の四つ葉のバッジ"
+    },
+    {
+      "name": "ギャラクシー四つ葉 (Unused)",
+      "src": "lucky_galaxy.png",
+      "width": 64,
+      "alt": "ギャラクシー四つ葉のバッジ"
+    },
+    { "name": "肉球", "src": "cat.png", "width": 64, "alt": "肉球のバッジ" },
+    {
+      "name": "バッテリー (Unused)",
+      "src": "battery.png",
+      "width": 64,
+      "alt": "バッテリーのバッジ"
+    },
+    {
+      "name": "ミクリではないなにか (Unused)",
+      "src": "mikuri.png",
+      "width": 64,
+      "alt": "ミクリではないなにかのバッジ"
+    },
+    {
+      "name": "たくたん",
+      "src": "takutan.png",
+      "width": 64,
+      "alt": "たくたんのバッジ"
+    },
+    {
+      "name": "丸亀先輩 (Unused)",
+      "src": "marugame.png",
+      "width": 64,
+      "alt": "丸亀先輩のバッジ"
+    },
+    {
+      "name": "最高裁 (Unused)",
+      "src": "saikousai.png",
+      "width": 64,
+      "alt": "最高裁のバッジ"
+    },
+    {
+      "name": "白鳳アリス (Unused)",
+      "src": "alice.png",
+      "width": 64,
+      "alt": "白鳳アリスのバッジ"
+    },
+    {
+      "name": "Motchiy",
+      "src": "motchiy_badge.png",
+      "width": 64,
+      "alt": "Motchiyのバッジ"
+    },
+    {
+      "name": "ファイノン (崩壊：スターレイル)",
+      "src": "phainon.png",
+      "width": 64,
+      "alt": "ファイノンのバッジ"
+    },
+    {
+      "name": "ジオディテール (Unused)",
+      "src": "geodetail.png",
+      "width": 64,
+      "alt": "ジオディテールのバッジ"
+    },
+    {
+      "name": "ウィルバード (Unused)",
+      "src": "wilburd.png",
+      "width": 64,
+      "alt": "ウィルバードのバッジ"
+    },
+    {
+      "name": "死錯点 (Unused)",
+      "src": "dead_cross.png",
+      "width": 64,
+      "alt": "死錯点のバッジ"
+    },
+    {
+      "name": "眼 (Unused)",
+      "src": "the_eye.png",
+      "width": 64,
+      "alt": "眼のバッジ"
+    },
+    {
+      "name": "サンゴ (Unused)",
+      "src": "coral.png",
+      "width": 64,
+      "alt": "サンゴのバッジ"
+    },
+    {
+      "name": "青い月 (Unused)",
+      "src": "blue_moon.png",
+      "width": 64,
+      "alt": "青い月のバッジ"
+    },
+    {
+      "name": "四時 (Unused)",
+      "src": "four_o_clock.png",
+      "width": 64,
+      "alt": "四時のバッジ"
+    },
+    {
+      "name": "ボンファイア (Unused)",
+      "src": "bonfire.png",
+      "width": 64,
+      "alt": "ボンファイアのバッジ"
+    },
+    {
+      "name": "ファイジェオ (Unused)",
+      "src": "faigeo.png",
+      "width": 64,
+      "alt": "ファイジェオのバッジ"
+    }
+  ],
+  "banners": [
+    {
+      "name": "空きコマ",
+      "src": "empty_banner.png",
+      "width": 400,
+      "alt": "広告募集中のバナー画像"
+    },
+    {
+      "name": "Motchiy Channel",
+      "src": "channel1.png",
+      "width": 400,
+      "alt": "Motchiy Channelのバナー画像"
+    },
+    {
+      "name": "さいほうへいきのpixiv",
+      "src": "banner_heiki_pixiv.png",
+      "width": 400,
+      "alt": "さいほうへいきのpixivのバナー画像"
+    },
+    {
+      "name": "たくたんは香辛料を体に入れ込む",
+      "src": "banner_takutan_spice.png",
+      "width": 400,
+      "alt": "たくたんは香辛料を体に入れ込むのバナー画像"
+    }
+  ],
+  "otherImages": [
+    {
+      "name": "チャリティちゃん (さいほうへいきのアイコン)",
+      "src": "heikikun.png",
+      "width": 80,
+      "alt": "さいほうへいきのアイコン"
+    },
+    {
+      "name": "Motchiyのアイコン",
+      "src": "motchiy.png",
+      "width": 80,
+      "alt": "Motchiyのアイコン"
+    },
+    {
+      "name": "シャトランジくんファビコン",
+      "src": "favicon.png",
+      "width": 80,
+      "alt": "シャトランジくんのファビコン"
+    },
+    {
+      "name": "シャトランジくんアイコン",
+      "src": "shatranj_icon.png",
+      "width": 80,
+      "alt": "シャトランジくんのアイコン"
+    },
+    {
+      "name": "OGP用サムネイル",
+      "src": "ogp.png",
+      "width": 400,
+      "alt": "OGP用サムネイル画像"
+    },
+    {
+      "name": "OGP用サムネイル（925）",
+      "src": "ogp_925.png",
+      "width": 400,
+      "alt": "925のOGP用サムネイル画像"
+    },
+    {
+      "name": "シャトランジくん",
+      "nameLink": "/about_shatranj.html",
+      "nameSuffix": "401エラー画像",
+      "src": "401.jpg",
+      "width": 400,
+      "alt": "シャトランジくんの401エラー画像"
+    },
+    {
+      "name": "シャトランジくん",
+      "nameLink": "/about_shatranj.html",
+      "nameSuffix": "402エラー画像",
+      "src": "402.jpg",
+      "width": 400,
+      "alt": "シャトランジくんの402エラー画像"
+    },
+    {
+      "name": "シャトランジくん",
+      "nameLink": "/about_shatranj.html",
+      "nameSuffix": "403エラー画像",
+      "src": "403.jpg",
+      "width": 400,
+      "alt": "シャトランジくんの403エラー画像"
+    },
+    {
+      "name": "シャトランジくん",
+      "nameLink": "/about_shatranj.html",
+      "nameSuffix": "404エラー画像",
+      "src": "404.jpg",
+      "width": 400,
+      "alt": "シャトランジくんの404エラー画像"
+    },
+    {
+      "name": "シャトランジくん",
+      "nameLink": "/about_shatranj.html",
+      "nameSuffix": "410エラー画像",
+      "src": "410.jpg",
+      "width": 400,
+      "alt": "シャトランジくんの410エラー画像"
+    },
+    {
+      "name": "シャトランジくん",
+      "nameLink": "/about_shatranj.html",
+      "nameSuffix": "418エラー画像",
+      "src": "418.jpg",
+      "width": 400,
+      "alt": "シャトランジくんの418エラー画像"
+    },
+    {
+      "name": "シャトランジくん",
+      "nameLink": "/about_shatranj.html",
+      "nameSuffix": "429エラー画像",
+      "src": "429.jpg",
+      "width": 400,
+      "alt": "シャトランジくんの429エラー画像"
+    },
+    {
+      "name": "シャトランジくん",
+      "nameLink": "/about_shatranj.html",
+      "nameSuffix": "451エラー画像",
+      "src": "451.jpg",
+      "width": 400,
+      "alt": "シャトランジくんの451エラー画像"
+    },
+    {
+      "name": "シャトランジくん",
+      "nameLink": "/about_shatranj.html",
+      "nameSuffix": "507エラー画像",
+      "src": "507.jpg",
+      "width": 400,
+      "alt": "シャトランジくんの507エラー画像"
+    },
+    {
+      "name": "シャトランジくん",
+      "nameLink": "/about_shatranj.html",
+      "nameSuffix": "508エラー画像",
+      "src": "508.jpg",
+      "width": 400,
+      "alt": "シャトランジくんの508エラー画像"
+    },
+    {
+      "name": "センチュリーくん",
+      "nameSuffix": "925エラー画像",
+      "src": "925.jpg",
+      "width": 400,
+      "alt": "センチュリーくんの925エラー画像"
+    }
+  ]
+}

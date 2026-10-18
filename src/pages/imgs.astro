@@ -1,0 +1,116 @@
+---
+import DocumentLayout from "../layouts/DocumentLayout.astro";
+import ImageListRow from "../components/ImageListRow.astro";
+import imageList from "../data/image-list.json";
+---
+
+<DocumentLayout
+    title="Heiki's Board - へいきのフリー素材置き場・画像リスト"
+    description="Heiki's Boardに使用されている画像のリストページかなにかです。一応自由に使用可能・クレジット表記不要のフリー素材としています。"
+>
+    <div class="documents-container">
+        <h1>へいきのフリー素材置き場・画像リスト</h1>
+        <p>
+            とりあえずのindexとして置いてるページだけど、せっかくなので使ってる画像の目録ページに仕立て上げてやるぜ！
+            <br />
+            <a href="../credits_heiki.html">さいほうへいき</a>
+            がこの掲示板で使うために用意した、いろんな画像たちの紹介と配布ページです。
+        </p>
+        <p>
+            質は低いけど使いたいものがあったらぜひ使って行ってください。報告等は不要、権利表記もいりません。してくれると嬉しいけど。
+            <br />
+            そんな感じのフリー素材となっています。
+        </p>
+
+        <div class="toc-box">
+            <p class="toc-title">この記事の目次</p>
+            <ul class="toc-list">
+                <li>
+                    <a href="#badges">1. ミニアイコン・バッジの類</a>
+                </li>
+                <li>
+                    <a href="#banners">2. バナー広告</a>
+                </li>
+                <li>
+                    <a href="#other">3. その他</a>
+                </li>
+            </ul>
+        </div>
+
+        <h2 id="badges">ミニアイコン・バッジの類</h2>
+        <table class="table-box">
+            <colgroup>
+                <col class="column-1" />
+                <col class="column-2" />
+                <col class="column-3" />
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>画像サンプル</th>
+                    <th>ダウンロード</th>
+                </tr>
+            </thead>
+            <tbody>
+                {imageList.badges.map((item) => (
+                    <ImageListRow {...item} />
+                ))}
+            </tbody>
+        </table>
+        <p>
+            これらのバッジがどこで使われているのかについては、
+            <a href="../about_badges.html">バッジについて</a>
+            も併せてご参照ください。
+        </p>
+
+        <h2 id="banners">バナー広告</h2>
+        <table class="table-box">
+            <colgroup>
+                <col class="column-1" />
+                <col class="column-2" />
+                <col class="column-3" />
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>画像サンプル</th>
+                    <th>ダウンロード</th>
+                </tr>
+            </thead>
+            <tbody>
+                {imageList.banners.map((item) => (
+                    <ImageListRow {...item} />
+                ))}
+            </tbody>
+        </table>
+        <p>
+            これらのバナー広告については、
+            <a href="../about_banner.html">チャンネルバナー広告について</a>
+            も併せてご参照ください。
+        </p>
+
+        <h2 id="other">その他</h2>
+        <table class="table-box">
+            <colgroup>
+                <col class="column-1" />
+                <col class="column-2" />
+                <col class="column-3" />
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>画像サンプル</th>
+                    <th>ダウンロード</th>
+                </tr>
+            </thead>
+            <tbody>
+                {imageList.otherImages.map((item) => (
+                    <ImageListRow {...item} />
+                ))}
+            </tbody>
+        </table>
+    </div>
+</DocumentLayout>

@@ -1,0 +1,29 @@
+---
+interface Props {
+    name: string;
+    src: string;
+    width: number;
+    alt: string;
+    nameLink?: string;
+    nameSuffix?: string;
+}
+
+const { name, src, width, alt, nameLink, nameSuffix } = Astro.props;
+const imagePath = `/imgs/${src}`;
+---
+
+<tr>
+    <td>
+        {nameLink ? <a href={nameLink}>{name}</a> : name}
+        {nameSuffix && (
+            <>
+                <br />
+                {nameSuffix}
+            </>
+        )}
+    </td>
+    <td><img src={imagePath} width={width} alt={alt} /></td>
+    <td>
+        <a href={imagePath} class="download-button" download>ダウンロード</a>
+    </td>
+</tr>

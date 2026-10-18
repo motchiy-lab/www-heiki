@@ -4,5 +4,6 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "types": ["@cloudflare/workers-types"],
+    "baseUrl": "./src"
   },
 }
