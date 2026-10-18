@@ -1,171 +1,166 @@
 ---
 import DocumentLayout from "../layouts/DocumentLayout.astro";
 import { errors } from "../data/errors";
-const normalErrors = errors.filter(
-    (error) => error.category === "normal"
-);
-const ytdlpErrors = errors.filter(
-    (error) => error.category === "ytdlp"
-);
+const normalErrors = errors.filter((error) => error.category === "normal");
+const ytdlpErrors = errors.filter((error) => error.category === "ytdlp");
 ---
 
 <DocumentLayout
     title="Heiki's Board - おもしろエラーページ集"
-    description="Heiki's Boardに実装されている、定番のものからちょっと変わったものまでのいろいろなエラーページをリストアップしてまとめています。それぞれのエラーページで表示されるイラストを見ることもできます！">
-            <div class="documents-container">
-                <h1>おもしろエラーページ集</h1>
-                <div class="toc-box">
-                    <p class="toc-title">この記事の目次</p>
-                    <ul class="toc-list">
-                        <li>
-                            <a href="#overview">1. 概要</a>
-                        </li>
-                        <li>
-                            <a href="#list">2. 一覧表</a>
-                        </li>
-                        <li>
-                            <a href="#ytdlp">
-                                1. yt-dlp on Motchiyのエラーページ
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#checkable">
-                                3. 実際にステータスコードを確認できるもの
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    description="Heiki's Boardに実装されている、定番のものからちょっと変わったものまでのいろいろなエラーページをリストアップしてまとめています。それぞれのエラーページで表示されるイラストを見ることもできます！"
+>
+    <div class="documents-container">
+        <h1>おもしろエラーページ集</h1>
+        <div class="toc-box">
+            <p class="toc-title">この記事の目次</p>
+            <ul class="toc-list">
+                <li>
+                    <a href="#overview">1. 概要</a>
+                </li>
+                <li>
+                    <a href="#list">2. 一覧表</a>
+                </li>
+                <li>
+                    <a href="#ytdlp">1. yt-dlp on Motchiyのエラーページ</a>
+                </li>
+                <li>
+                    <a href="#checkable">
+                        3. 実際にステータスコードを確認できるもの
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-                <h2 id="overview">概要</h2>
-                <p>
+        <h2 id="overview">概要</h2>
+        <p>
+            <b>
+                このサイトには、運営者の趣味で多種多様なエラーページが用意されています。
+            </b>
+        </p>
+        <p>
+            みなさんも「<b>404 Not Found</b>」や「
+            <b>500 Internal Server Error</b>
+            」あたりなら聞いたことがあるかもしれません。
+            <br />
+            でもHTTPには、それ以外にもものすごい量のエラーが定義されているんですよ。
+        </p>
+        <p>
+            <b>
+                このHeiki's
+                Boardでは、それらに対応したページをたくさん取り揃えていく
+            </b>
+            つもりがあります。
+            <br />
+            それぞれのページには僕が描いた落書きイラストもあるので、ぜひ見ていってください。
+        </p>
+        <p>
+            最後に、<b>ひとつ注意点があります！</b>
+            <br />
+            それぞれのページは直接確認すると、実際にはエラーコードが内部的には返ってきません。
+            <br />
+            そのため、実際に404などのコードを確認したい場合には、それぞれの特定の手順を踏むか、一番下のリストからエラーが返ってくるページを見る必要があるんですね。
+            <br />
+            ややこしい。
+        </p>
+        <h2 id="list">一覧表</h2>
+        <ul>
+            {normalErrors.map((error) => (
+                <li>
                     <b>
-                        このサイトには、運営者の趣味で多種多様なエラーページが用意されています。
+                        <a href={`/${error.code}.html`}>
+                            {error.code} {error.name}
+                        </a>
                     </b>
-                </p>
-                <p>
-                    みなさんも「<b>404 Not Found</b>」や「
-                    <b>500 Internal Server Error</b>
-                    」あたりなら聞いたことがあるかもしれません。
-                    <br />
-                    でもHTTPには、それ以外にもものすごい量のエラーが定義されているんですよ。
-                </p>
-                <p>
+                </li>
+            ))}
+        </ul>
+
+        <h3 id="ytdlp">yt-dlp on Motchiyのエラーページ</h3>
+        <p>
+            また、姉妹サイトである
+            <a href="https://ytdlp.motchiy.com/">yt-dlp on Motchiy</a>
+            のエラーページについても同様にまとめておきます。
+            <br />
+            あちらでは、ステータスコードが同じでも実際のプログラム中での発生原因が異なるケースが有るため、特殊なエラーページもいくつか作成されています。
+        </p>
+        <ul>
+            {ytdlpErrors.map((error) => (
+                <li>
                     <b>
-                        このHeiki's
-                        Boardでは、それらに対応したページをたくさん取り揃えていく
+                        <a href={`/${error.code}.html`}>
+                            {error.code} {error.name}
+                        </a>
                     </b>
-                    つもりがあります。
-                    <br />
-                    それぞれのページには僕が描いた落書きイラストもあるので、ぜひ見ていってください。
-                </p>
-                <p>
-                    最後に、<b>ひとつ注意点があります！</b>
-                    <br />
-                    それぞれのページは直接確認すると、実際にはエラーコードが内部的には返ってきません。
-                    <br />
-                    そのため、実際に404などのコードを確認したい場合には、それぞれの特定の手順を踏むか、一番下のリストからエラーが返ってくるページを見る必要があるんですね。
-                    <br />
-                    ややこしい。
-                </p>
-                <h2 id="list">一覧表</h2>
-                <ul>
-                    {normalErrors.map((error) => (
-                        <li>
-                            <b>
-                                <a href={`/${error.code}.html`}>
-                                    {error.code} {error.name}
-                                </a>
-                            </b>
-                        </li>
-                    ))}
-                </ul>
+                </li>
+            ))}
+        </ul>
 
-                <h3 id="ytdlp">yt-dlp on Motchiyのエラーページ</h3>
-                <p>
-                    また、姉妹サイトである
-                    <a href="https://ytdlp.motchiy.com/">yt-dlp on Motchiy</a>
-                    のエラーページについても同様にまとめておきます。
-                    <br />
-                    あちらでは、ステータスコードが同じでも実際のプログラム中での発生原因が異なるケースが有るため、特殊なエラーページもいくつか作成されています。
-                </p>
-                <ul>
-                    {ytdlpErrors.map((error) => (
-                        <li>
-                            <b>
-                                <a href={`/${error.code}.html`}>
-                                    {error.code} {error.name}
-                                </a>
-                            </b>
-                        </li>
-                    ))}
-                </ul>
-
-                <h2 id="checkable">実際にステータスコードを確認できるもの</h2>
-                <p>
-                    現在、ホストサーバーの移行に伴って810および925が利用不可能な状態です。
-                </p>
-                <ul>
-                    <li>
-                        <b>
-                            <a href="https://heiki.motchiy.com/unauthorized">
-                                401 Unauthorized
-                            </a>
-                        </b>
-                    </li>
-                    <li>
-                        <b>
-                            <a href="https://heiki.motchiy.com/forbidden">
-                                403 Forbidden
-                            </a>
-                        </b>
-                    </li>
-                    <li>
-                        <b>
-                            <a href="https://heiki.motchiy.com/request_timeout">
-                                408 Request Timeout.
-                            </a>
-                        </b>
-                    </li>
-                    <li>
-                        <b>
-                            <a href="https://heiki.motchiy.com/teapot">
-                                418 I'm a teapot.
-                            </a>
-                        </b>
-                    </li>
-                    <li>
-                        <b>
-                            <a href="https://heiki.motchiy.com/unavailable_for_legal_reasons">
-                                451 Unavailable For Legal Reasons
-                            </a>
-                        </b>
-                    </li>
-                    <li>
-                        <b>
-                            <a href="https://heiki.motchiy.com/insufficient_storage">
-                                507 Insufficient Storage
-                            </a>
-                        </b>
-                    </li>
-                    <li>
-                        <b>
-                            <a href="https://heiki.motchiy.com/loop_detected">
-                                508 Loop Detected
-                            </a>
-                        </b>
-                    </li>
-                    <li>
-                        <b>
-                            <a href="https://heiki.motchiy.com/rulebreak">
-                                925 I'M BREAKING RULES!!!!
-                            </a>
-                        </b>
-                    </li>
-                </ul>
-                <p>
-                    また、このステータスコードについては
-                    <a href="/status_scripts/">ステータスコードじっけんラボ</a>
-                    にもまとめられているので、ぜひ併せてご覧ください。
-                </p>
-            </div>
+        <h2 id="checkable">実際にステータスコードを確認できるもの</h2>
+        <p>
+            現在、ホストサーバーの移行に伴って810および925が利用不可能な状態です。
+        </p>
+        <ul>
+            <li>
+                <b>
+                    <a href="https://heiki.motchiy.com/unauthorized">
+                        401 Unauthorized
+                    </a>
+                </b>
+            </li>
+            <li>
+                <b>
+                    <a href="https://heiki.motchiy.com/forbidden">
+                        403 Forbidden
+                    </a>
+                </b>
+            </li>
+            <li>
+                <b>
+                    <a href="https://heiki.motchiy.com/request_timeout">
+                        408 Request Timeout.
+                    </a>
+                </b>
+            </li>
+            <li>
+                <b>
+                    <a href="https://heiki.motchiy.com/teapot">
+                        418 I'm a teapot.
+                    </a>
+                </b>
+            </li>
+            <li>
+                <b>
+                    <a href="https://heiki.motchiy.com/unavailable_for_legal_reasons">
+                        451 Unavailable For Legal Reasons
+                    </a>
+                </b>
+            </li>
+            <li>
+                <b>
+                    <a href="https://heiki.motchiy.com/insufficient_storage">
+                        507 Insufficient Storage
+                    </a>
+                </b>
+            </li>
+            <li>
+                <b>
+                    <a href="https://heiki.motchiy.com/loop_detected">
+                        508 Loop Detected
+                    </a>
+                </b>
+            </li>
+            <li>
+                <b>
+                    <a href="https://heiki.motchiy.com/rulebreak">
+                        925 I'M BREAKING RULES!!!!
+                    </a>
+                </b>
+            </li>
+        </ul>
+        <p>
+            また、このステータスコードについては
+            <a href="/status_scripts/">ステータスコードじっけんラボ</a>
+            にもまとめられているので、ぜひ併せてご覧ください。
+        </p>
+    </div>
 </DocumentLayout>

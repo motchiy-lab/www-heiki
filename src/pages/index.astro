@@ -1,8 +1,11 @@
 ---
-import DocumentLayout from "../layouts/DocumentLayout.astro"
+import DocumentLayout from "../layouts/DocumentLayout.astro";
 ---
 
-<DocumentLayout title="Heiki's Board - 超シンプルなYouTube宣伝掲示板！" description="簡単にYouTube動画を共有・宣伝できるコミュニティ掲示板です。">
+<DocumentLayout
+    title="Heiki's Board - 超シンプルなYouTube宣伝掲示板！"
+    description="簡単にYouTube動画を共有・宣伝できるコミュニティ掲示板です。"
+>
     <div id="grid" class="grid"></div>
     <hr />
     <div style="margin-top:18px;color:#555;font-size:13px;text-align:center">
@@ -13,7 +16,6 @@ import DocumentLayout from "../layouts/DocumentLayout.astro"
         質問やバグ等の報告は作者の
         <a href="https://x.com/leoved_kuru">Kuru⁵のDM</a>へ。
     </div>
-
 
     <script is:inline src="/script.js"></script>
 </DocumentLayout>

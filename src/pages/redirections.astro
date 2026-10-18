@@ -6,188 +6,185 @@ import DocumentLayout from "../layouts/DocumentLayout.astro";
     title="Heiki's Board - リダイレクトサービスについて"
     description="Heiki's Boardのドメインにおいて実装されているリダイレクトサービスの一覧です。"
 >
+    <div class="documents-container">
+        <h1>リダイレクトサービスについて</h1>
+        <img
+            src="/imgs/redirections.jpg"
+            class="thumbnail"
+            alt="ステージに迷い込んだシャトランジくん"
+        />
+        <div class="toc-box">
+            <p class="toc-title">この記事の目次</p>
+            <ul class="toc-list">
+                <li>
+                    <a href="#overview">1. 概略</a>
+                </li>
+                <li>
+                    <a href="#list">2. 一覧</a>
+                </li>
+            </ul>
+        </div>
 
-            <div class="documents-container">
-                <h1>リダイレクトサービスについて</h1>
-                <img
-                    src="/imgs/redirections.jpg"
-                    class="thumbnail"
-                    alt="ステージに迷い込んだシャトランジくん"
-                />
-                <div class="toc-box">
-                    <p class="toc-title">この記事の目次</p>
-                    <ul class="toc-list">
-                        <li>
-                            <a href="#overview">1. 概略</a>
-                        </li>
-                        <li>
-                            <a href="#list">2. 一覧</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <h2 id="overview">概略</h2>
-                <del>
-                <p>
-                    ドメインをせっかく取ったので、いくつかのサイトに向けた簡素なリダイレクトが行えるURLを複数実装しています。
-                </p>
-                <p>
-                    現時点ではさいほうへいきや友人に関するリダイレクトのみですが、もし要望などがあれば
-                    <a href="https://twitter.com/leoved_kuru">作者のTwitter</a>
-                    までDMを頂けると実装出来ます！
-                    <br />
-                    その際は、飛ばしたいアドレスとご希望の短名をお知らせください。
-                    <br />
-                    なお、基本的に『https://heiki.motchiy.com/ほにゃらら』といった形になるので、ご了承ください。
-                </p>
-                </del>
-                <p>
-                    ホストの移行に伴いリダイレクトはすべて使用不可能になっています。復旧する可能性はありますが、目処は立っていません。
-                </p>
-                <h2 id="list">一覧</h2>
-                <table class="table-box">
-                    <colgroup>
-                        <col class="column-1" />
-                        <col class="column-2" />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>リダイレクトID</th>
-                            <th>リダイレクト先概要</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <a href="https://w.atwiki.jp/mootchiiy/pages/89.html">
-                                    takutan
-                                </a>
-                            </td>
-                            <td>『たくたん』のwikiページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://w.atwiki.jp/mootchiiy/pages/73.html">
-                                    motchiy
-                                </a>
-                            </td>
-                            <td>『Motchiy』のwikiページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://w.atwiki.jp/mootchiiy/pages/48.html">
-                                    heiki
-                                </a>
-                            </td>
-                            <td>『さいほうへいき』のwikiページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://w.atwiki.jp/mootchiiy/pages/87.html">
-                                    parinai
-                                </a>
-                            </td>
-                            <td>『パーリナイ山本』のwikiページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://w.atwiki.jp/mootchiiy/pages/116.html">
-                                    kaiha
-                                </a>
-                            </td>
-                            <td>『kaiha』のwikiページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://w.atwiki.jp/mootchiiy/pages/110.html">
-                                    marugame
-                                </a>
-                            </td>
-                            <td>『丸亀先輩』のwikiページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://w.atwiki.jp/mootchiiy/pages/99.html">
-                                    renon
-                                </a>
-                            </td>
-                            <td>『レノン』のwikiページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://w.atwiki.jp/mootchiiy/pages/158.html">
-                                    rai
-                                </a>
-                            </td>
-                            <td>『ライ』のwikiページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://w.atwiki.jp/mootchiiy/pages/103.html">
-                                    saikousai
-                                </a>
-                            </td>
-                            <td>『最高裁』のwikiページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://www.pixiv.net/users/64641168">
-                                    heiki_pixiv
-                                </a>
-                            </td>
-                            <td>さいほうへいきのpixivユーザーページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://kakuyomu.jp/users/melting_star">
-                                    heiki_kakuyomu
-                                    <br />
-                                    heiki_kkym
-                                </a>
-                            </td>
-                            <td>さいほうへいきのカクヨムユーザーページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://mypage.syosetu.com/2526862/">
-                                    heiki_syosetu
-                                    <br />
-                                    heiki_sst
-                                </a>
-                            </td>
-                            <td>さいほうへいきの小説家になろうマイページ</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://kakuyomu.jp/works/16818792439308107767">
-                                    novel_gun
-                                </a>
-                            </td>
-                            <td>
-                                小説『銃ひとつで転生させられた俺、味方が雑すぎるから仕方なく無双した件。』ページ
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://kakuyomu.jp/works/16818792439776244514">
-                                    novel_spice
-                                </a>
-                            </td>
-                            <td>
-                                小説『たくたんは香辛料を体に入れ込む：Rewind』ページ
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="https://kakuyomu.jp/works/16818792439187048474">
-                                    novel_beta
-                                </a>
-                            </td>
-                            <td>
-                                小説『不思議なセカイにりんごを添えてβ』ページ
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <h2 id="overview">概略</h2>
+        <del>
+            <p>
+                ドメインをせっかく取ったので、いくつかのサイトに向けた簡素なリダイレクトが行えるURLを複数実装しています。
+            </p>
+            <p>
+                現時点ではさいほうへいきや友人に関するリダイレクトのみですが、もし要望などがあれば
+                <a href="https://twitter.com/leoved_kuru">作者のTwitter</a>
+                までDMを頂けると実装出来ます！
+                <br />
+                その際は、飛ばしたいアドレスとご希望の短名をお知らせください。
+                <br />
+                なお、基本的に『https://heiki.motchiy.com/ほにゃらら』といった形になるので、ご了承ください。
+            </p>
+        </del>
+        <p>
+            ホストの移行に伴いリダイレクトはすべて使用不可能になっています。復旧する可能性はありますが、目処は立っていません。
+        </p>
+        <h2 id="list">一覧</h2>
+        <table class="table-box">
+            <colgroup>
+                <col class="column-1" />
+                <col class="column-2" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>リダイレクトID</th>
+                    <th>リダイレクト先概要</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="https://w.atwiki.jp/mootchiiy/pages/89.html">
+                            takutan
+                        </a>
+                    </td>
+                    <td>『たくたん』のwikiページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://w.atwiki.jp/mootchiiy/pages/73.html">
+                            motchiy
+                        </a>
+                    </td>
+                    <td>『Motchiy』のwikiページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://w.atwiki.jp/mootchiiy/pages/48.html">
+                            heiki
+                        </a>
+                    </td>
+                    <td>『さいほうへいき』のwikiページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://w.atwiki.jp/mootchiiy/pages/87.html">
+                            parinai
+                        </a>
+                    </td>
+                    <td>『パーリナイ山本』のwikiページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://w.atwiki.jp/mootchiiy/pages/116.html">
+                            kaiha
+                        </a>
+                    </td>
+                    <td>『kaiha』のwikiページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://w.atwiki.jp/mootchiiy/pages/110.html">
+                            marugame
+                        </a>
+                    </td>
+                    <td>『丸亀先輩』のwikiページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://w.atwiki.jp/mootchiiy/pages/99.html">
+                            renon
+                        </a>
+                    </td>
+                    <td>『レノン』のwikiページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://w.atwiki.jp/mootchiiy/pages/158.html">
+                            rai
+                        </a>
+                    </td>
+                    <td>『ライ』のwikiページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://w.atwiki.jp/mootchiiy/pages/103.html">
+                            saikousai
+                        </a>
+                    </td>
+                    <td>『最高裁』のwikiページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.pixiv.net/users/64641168">
+                            heiki_pixiv
+                        </a>
+                    </td>
+                    <td>さいほうへいきのpixivユーザーページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://kakuyomu.jp/users/melting_star">
+                            heiki_kakuyomu
+                            <br />
+                            heiki_kkym
+                        </a>
+                    </td>
+                    <td>さいほうへいきのカクヨムユーザーページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://mypage.syosetu.com/2526862/">
+                            heiki_syosetu
+                            <br />
+                            heiki_sst
+                        </a>
+                    </td>
+                    <td>さいほうへいきの小説家になろうマイページ</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://kakuyomu.jp/works/16818792439308107767">
+                            novel_gun
+                        </a>
+                    </td>
+                    <td>
+                        小説『銃ひとつで転生させられた俺、味方が雑すぎるから仕方なく無双した件。』ページ
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://kakuyomu.jp/works/16818792439776244514">
+                            novel_spice
+                        </a>
+                    </td>
+                    <td>
+                        小説『たくたんは香辛料を体に入れ込む：Rewind』ページ
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://kakuyomu.jp/works/16818792439187048474">
+                            novel_beta
+                        </a>
+                    </td>
+                    <td>小説『不思議なセカイにりんごを添えてβ』ページ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </DocumentLayout>
