@@ -128,6 +128,11 @@ main {
     transform: translateY(5px);
 }
 
+.header {
+    flex-direction:column;
+    padding-bottom: 8px;
+}
+
 .header-links {
     display: flex;
     align-items: center;
