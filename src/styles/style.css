@@ -131,13 +131,13 @@ main {
 .header-links {
     display: flex;
     align-items: center;
+    padding-top: 12px;
 }
 
 .header-link {
     color: #fff;
     text-decoration: underline;
     display: inline-block;
-    padding: 0 10px;
 }
 
 .header-link:hover {
