@@ -429,6 +429,8 @@ footer {
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
     box-sizing: border-box;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 .banner-row a {
