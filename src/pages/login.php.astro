@@ -9,18 +9,20 @@ import DocumentLayout from "../layouts/DocumentLayout.astro";
     <div class="documents-container">
         <h1>Heiki's Boardへログイン（PHP利用フォーム）</h1>
         <p>Heiki's Boardへログインします。PHPを利用しているフォームなので、非常に脆弱です……！</p>
-            <div>
+        <div style="text-align: center; max-width: 400px; margin: 40px auto; padding: 0 20px;">
+            <div style="display: flex; flex-direction: column; text-align: left; margin-bottom: 16px;">
                 <label id="email-label" for="email">メールアドレス</label>
                 <input type="email" id="email" required autocomplete="email">
             </div>
-            <div>
+            <div style="display: flex; flex-direction: column; text-align: left; margin-bottom: 16px;">
                 <label id="password-label" for="password">パスワード</label>
                 <input type="password" id="password" required autocomplete="current-password">
             </div>
-            <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; margin-bottom: 24px;">
                 <input type="checkbox" name="remember">ログイン状態を保持
                 <a href="#" onclick="alert('処理に失敗しました。諦め\nなさい。')">パスワードを忘れた方</a>
             </div>
-            <button type="submit" onclick="alert('処理に失敗しました。パスワードが正しいかをご確認の上、再度やり直し\nなさい。')">脆弱なPHPが利用されていることを理解したうえでログイン</button>
+            <button style="width: 100%; box-sizing: border-box;" type="submit" onclick="alert('処理に失敗しました。パスワードが正しいかをご確認の上、再度やり直し\nなさい。')">脆弱なPHPが利用されていることを理解したうえでログイン</button>
+        </div>
     </div>
 </DocumentLayout>
