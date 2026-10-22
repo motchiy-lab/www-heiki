@@ -11,6 +11,7 @@ compatibility_flags = [
 [assets]
 binding = "ASSETS"
 directory = "./dist/client"
+not_found_handling = "404-page"
 
 [[d1_databases]]
 binding = "DB"
