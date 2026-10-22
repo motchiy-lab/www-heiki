@@ -19,7 +19,7 @@ import DocumentLayout from "../layouts/DocumentLayout.astro";
                 <input type="password" id="password" required autocomplete="current-password">
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; margin-bottom: 24px;">
-                <input type="checkbox" name="remember">ログイン状態を保持
+                <div><input type="checkbox" name="remember">ログイン状態を保持</div>
                 <a href="#" onclick="alert('処理に失敗しました。諦め\nなさい。')">パスワードを忘れた方</a>
             </div>
             <button style="width: 100%; box-sizing: border-box;" type="submit" onclick="alert('処理に失敗しました。パスワードが正しいかをご確認の上、再度やり直し\nなさい。')">脆弱なPHPが利用されていることを理解したうえでログイン</button>
