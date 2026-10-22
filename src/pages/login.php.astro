@@ -11,14 +11,14 @@ import DocumentLayout from "../layouts/DocumentLayout.astro";
         <p>Heiki's Boardへログインします。PHPを利用しているフォームなので、非常に脆弱です……！</p>
             <div>
                 <label id="email-label" for="email">メールアドレス</label>
-                <input type="email" required autocomplete="email">
+                <input type="email" id="email" required autocomplete="email">
             </div>
             <div>
                 <label id="password-label" for="password">パスワード</label>
-                <input type="password" required autocomplete="current-password">
+                <input type="password" id="password" required autocomplete="current-password">
             </div>
             <div>
-                <input type="checkbox" name="remember">ログイン状態を保持</input>
+                <input type="checkbox" name="remember">ログイン状態を保持
                 <a href="#" onclick="alert('処理に失敗しました。諦め\nなさい。')">パスワードを忘れた方</a>
             </div>
             <button type="submit" onclick="alert('処理に失敗しました。パスワードが正しいかをご確認の上、再度やり直し\nなさい。')">脆弱なPHPが利用されていることを理解したうえでログイン</button>
