@@ -8,13 +8,16 @@ import DocumentLayout from "../layouts/DocumentLayout.astro";
 >
     <div class="documents-container">
         <script>
-            if(window.confirm('利用規約に同意の上で、脆弱なPHPフォームでのログインを行ってください。'))
+            function reallyPHP()
             {
-                if(window.confirm('このフォームでログインを行うと、非常に危険な脆弱性が修正されていないバージョンのPHPによりデータの処理が行われます。'))
+                if(window.confirm('利用規約に同意の上で、脆弱なPHPフォームでのログインを行ってください。'))
                 {
-                    if(window.confirm('非常に危険性の高い脆弱性を含むPHP製のフォームでログインしますか？'))
+                    if(window.confirm('このフォームでログインを行うと、非常に危険な脆弱性が修正されていないバージョンのPHPによりデータの処理が行われます。'))
                     {
-                        alert('処理に失敗しました。諦め\nなさい。');
+                        if(window.confirm('非常に危険性の高い脆弱性を含むPHP製のフォームでログインしますか？'))
+                        {
+                            alert('処理に失敗しました。諦め\nなさい。');
+                        }
                     }
                 }
             }
