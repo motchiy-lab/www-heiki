@@ -7,7 +7,7 @@ import DocumentLayout from "../layouts/DocumentLayout.astro";
     description="Heiki's BoardへPHPを利用しているログインフォームでログインするためのページです。"
 >
     <div class="documents-container">
-        <script>
+        <script is:inline>
             function reallyPHP()
             {
                 if(window.confirm('利用規約に同意の上で、脆弱なPHPフォームでのログインを行ってください。'))
