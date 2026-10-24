@@ -1,20 +1,12 @@
-// @ts-check
-import { defineConfig } from "astro/config";
-import cloudflare from "@astrojs/cloudflare";
+import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://heiki.motchiy.com",
-  output: "server",
+  output: 'server',
   adapter: cloudflare({
-    imageService: "passthrough",
-  }),
-  vite: {
-    optimizeDeps: {
-      exclude: ["route-cache"],
-    },
-  },
-  build: {
-    format: "file",
-  },
+    platformProxy: {
+      enabled: true, // ローカル開発時に wrangler のバインディングを有効にする
+    }
+  })
 });

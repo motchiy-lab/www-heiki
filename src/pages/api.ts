@@ -1,5 +1,4 @@
 import type { APIRoute } from "astro";
-import { env } from "cloudflare:workers";
 
 async function initDb(db: any) {
   await db
@@ -71,14 +70,18 @@ async function initDb(db: any) {
     .run();
 }
 
-export const GET: APIRoute = async ({ request }) => {
+export const GET: APIRoute = async (context) => {
+  const { request, locals } = context;
   const url = new URL(request.url);
   const action = url.searchParams.get("action") || "";
 
   const headers = { "Content-Type": "application/json; charset=utf-8" };
 
   try {
-    const db = (env as any).DB;
+    // Astroのlocalsまたはランタイムから環境変数/バインディングを取得
+    const runtime = (locals as any)?.runtime;
+    const db = runtime?.env?.DB || (import.meta.env as any).DB;
+
     if (!db) {
       return new Response(
         JSON.stringify({

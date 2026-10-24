@@ -7,8 +7,7 @@ $id=intval($_GET["id"]);
 $cache="../cache/$id.html";
 
 echo "<html>";
-echo "<head><link rel='stylesheet' href='../style.css' /><title>HeikiChan - スレッド".$id."</title><?php include __DIR__ . "/head.php"; ?>
-</head>";
+echo "<head><link rel='stylesheet' href='../style.css' /><meta charset='utf-8' /><title>HeikiChan - スレッド$id</title></head>";
 echo "<body>";
 
 include(__DIR__ . "/headers.php");

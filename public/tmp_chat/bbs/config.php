@@ -1,139 +1,144 @@
 <?php
 
-$SERVER_SECRET="CHANGE_SECRET";
+$SERVER_SECRET = "CHANGE_SECRET";
 
-$DAT_DIR=__DIR__."/../dat";
-$CACHE_DIR=__DIR__."/../cache";
+$DAT_DIR = __DIR__ . "/../dat";
+$CACHE_DIR = __DIR__ . "/../cache";
 
-function getCurrentThread(){
-global $DAT_DIR;
-return intval(trim(file_get_contents("$DAT_DIR/current_thread.txt")));
+function getCurrentThread()
+{
+    global $DAT_DIR;
+    return intval(trim(file_get_contents("$DAT_DIR/current_thread.txt")));
 }
 
-function setCurrentThread($id){
-global $DAT_DIR;
-file_put_contents("$DAT_DIR/current_thread.txt",$id);
+function setCurrentThread($id)
+{
+    global $DAT_DIR;
+    file_put_contents("$DAT_DIR/current_thread.txt", $id);
 }
 
-function getNextThreadID(){
+function getNextThreadID()
+{
+    global $DAT_DIR;
 
-global $DAT_DIR;
+    $fp = fopen("$DAT_DIR/current_thread.txt", "c+");
 
-$fp=fopen("$DAT_DIR/current_thread.txt","c+");
+    flock($fp, LOCK_EX);
 
-flock($fp,LOCK_EX);
+    rewind($fp);
 
-rewind($fp);
+    $current = intval(trim(fgets($fp)));
 
-$current=intval(trim(fgets($fp)));
+    $next = $current + 1;
 
-$next=$current+1;
+    ftruncate($fp, 0);
+    rewind($fp);
 
-ftruncate($fp,0);
-rewind($fp);
+    fwrite($fp, $next);
 
-fwrite($fp,$next);
+    flock($fp, LOCK_UN);
 
-flock($fp,LOCK_UN);
+    fclose($fp);
 
-fclose($fp);
-
-return $next;
+    return $next;
 }
 
-function generateID(){
+function generateID()
+{
+    global $SERVER_SECRET;
 
-global $SERVER_SECRET;
+    $ip = $_SERVER["REMOTE_ADDR"];
+    $ua = $_SERVER["HTTP_USER_AGENT"];
+    $date = date("Y-m-d");
 
-$ip=$_SERVER["REMOTE_ADDR"];
-$ua=$_SERVER["HTTP_USER_AGENT"];
-$date=date("Y-m-d");
+    $hash = hash("sha256", $ip . $ua . $date . $SERVER_SECRET);
 
-$hash=hash("sha256",$ip.$ua.$date.$SERVER_SECRET);
-
-return substr($hash,0,8);
+    return substr($hash, 0, 8);
 }
 
-function parseTrip($name){
+function parseTrip($name)
+{
+    $parts = explode("#", $name);
 
-$parts=explode("#",$name);
+    $display = htmlspecialchars($parts[0]);
 
-$display=htmlspecialchars($parts[0]);
+    if (count($parts) == 2) {
+        $trip = substr(hash("sha1", $parts[1]), 0, 8);
 
-if(count($parts)==2){
+        return "$display ◆$trip";
+    }
 
-$trip=substr(hash("sha1",$parts[1]),0,8);
-
-return "$display ◆$trip";
+    return $display;
 }
 
-return $display;
+function parseEmoji($text)
+{
+    return preg_replace_callback(
+        "/\:([a-zA-Z0-9_]+)\:/",
+        function ($m) {
+            $file = "../emojis/" . $m[1] . ".png";
+            if (file_exists($file)) {
+                return "<img src='../../emojis/" . $m[1] . ".png' width='20'>";
+            }
+            return $m[0];
+        },
+        htmlspecialchars($text),
+    );
 }
 
-function parseEmoji($text){
-    return preg_replace_callback( '/\:([a-zA-Z0-9_]+)\:/', function($m){
-        $file="../emojis/".$m[1].".png";
-        if(file_exists($file)){
-            return "<img src='../../emojis/".$m[1].".png' width='20'>";
+function parseAnchor($text)
+{
+    return preg_replace(
+        "/>>([0-9]+)/",
+        '<a href="#res$1">&gt;&gt;$1</a>',
+        $text,
+    );
+}
+
+function checkNG($text)
+{
+    $ng = ["死ね", "spam"];
+
+    foreach ($ng as $w) {
+        if (strpos($text, $w) !== false) {
+            return false;
         }
-        return $m[0];
-    }, htmlspecialchars($text) );
+    }
+
+    return true;
 }
 
-function parseAnchor($text){
+function cacheThread($thread)
+{
+    global $DAT_DIR, $CACHE_DIR;
 
-return preg_replace(
-'/>>([0-9]+)/',
-'<a href="#res$1">&gt;&gt;$1</a>',
-$text
-);
+    $dat = "$DAT_DIR/$thread.dat";
 
-}
+    if (!file_exists($dat)) {
+        return;
+    }
 
-function checkNG($text){
+    $lines = file($dat);
 
-$ng=["死ね","spam"];
+    ob_start();
 
-foreach($ng as $w){
-if(strpos($text,$w)!==false){
-return false;
-}
-}
+    echo "<h1>スレ$thread</h1>";
 
-return true;
-}
+    foreach ($lines as $i => $line) {
+        [$name, $mail, $date, $uid, $msg] = explode("<>", $line);
 
-function cacheThread($thread){
+        $msg = parseEmoji($msg);
+        $msg = parseAnchor($msg);
 
-global $DAT_DIR,$CACHE_DIR;
+        $no = $i + 1;
 
-$dat="$DAT_DIR/$thread.dat";
+        echo "<div id='res$no'>";
+        echo "$no " . parseTrip($name) . " $date ID:$uid<br>";
+        echo $msg;
+        echo "</div><hr>";
+    }
 
-if(!file_exists($dat))return;
+    $html = ob_get_clean();
 
-$lines=file($dat);
-
-ob_start();
-
-echo "<h1>スレ$thread</h1>";
-
-foreach($lines as $i=>$line){
-
-list($name,$mail,$date,$uid,$msg)=explode("<>",$line);
-
-$msg=parseEmoji($msg);
-$msg=parseAnchor($msg);
-
-$no=$i+1;
-
-echo "<div id='res$no'>";
-echo "$no ".parseTrip($name)." $date ID:$uid<br>";
-echo $msg;
-echo "</div><hr>";
-
-}
-
-$html=ob_get_clean();
-
-file_put_contents("$CACHE_DIR/$thread.html",$html);
+    file_put_contents("$CACHE_DIR/$thread.html", $html);
 }
