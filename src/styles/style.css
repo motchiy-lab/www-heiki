@@ -38,13 +38,14 @@ header {
     align-items: center;
 }
 
-input[type="text"] {
+.add-form {
+    width:400px;
     padding: 8px;
     border-radius: 6px;
     border: 1px solid #ddd;
 }
 
-button {
+.add-btn {
     padding: 8px 12px;
     border-radius: 6px;
     border: 0;

@@ -21,11 +21,13 @@ const { showAddForm = false } = Astro.props;
             <div class="add">
                 <input
                     id="videoUrl"
-                    type="text"
-                    placeholder="YouTube動画のURL(通常・ショート・ライブ可)"
-                    style="width: 500px;"
+                    type="url"
+                    placeholder="YouTube動画のURLを入力(通常・ショート・ライブ可)"
+                    class="add-form"
                 />
-                <button id="addBtn">追加！</button>
+                <button id="addBtn" class="add-btn">
+                    追加！
+                </button>
                 <div id="status"></div>
             </div>
         )}
