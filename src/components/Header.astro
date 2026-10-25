@@ -1,3 +1,7 @@
+---
+const { showAddForm = false } = Astro.props;
+---
+
 <header class="header">
     <div class="logo">
         <img
@@ -12,6 +16,19 @@
         <div class="sp-mode" style="opacity:.9;">
             Heiki's Board!
         </div>
+        <!-- showAddFormがtrueのときだけ、このdiv要素が出力される -->
+        {showAddForm && (
+            <div class="add">
+                <input
+                    id="videoUrl"
+                    type="text"
+                    placeholder="YouTube動画のURL(通常・ショート・ライブ可)"
+                    style="width: 500px;"
+                />
+                <button id="addBtn">追加！</button>
+                <div id="status"></div>
+            </div>
+        )}
     </div>
     <div class="header-links">
         <a href="/" class="pc-mode header-link">
