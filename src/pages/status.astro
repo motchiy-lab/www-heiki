@@ -1,0 +1,80 @@
+---
+import DocumentLayout from "../layouts/DocumentLayout.astro";
+---
+
+<DocumentLayout
+    title="Heiki's Board - ステータスコードじっけんラボ"
+    description="いろいろなステータスコードを返すことができるアドレスのまとめです。"
+>
+    <div class="documents-container">
+        <h1>ステータスコードじっけんラボ！</h1>
+
+        <p>
+            次のリストに並んでいるページにアクセスすると、いろいろなHTTPステータスコードが返ってきます。
+            <br />
+            DevToolsやcurlで確認してみよう！
+            <br />
+            あんまり使う機会は無いかもしれませんが、プログラムのステータスコードのテストに用いても構いません。
+        </p>
+        <p>
+            <ul>
+                <li>
+                    <b>
+                        <a href="https://heiki.motchiy.com/unauthorized">
+                            401 Unauthorized
+                        </a>
+                    </b>
+                </li>
+                <li>
+                    <b>
+                        <a href="https://heiki.motchiy.com/forbidden">
+                            403 Forbidden
+                        </a>
+                    </b>
+                </li>
+                <li>
+                    <b>
+                        <a href="https://heiki.motchiy.com/request_timeout">
+                            408 Request Timeout.
+                        </a>
+                    </b>
+                </li>
+                <li>
+                    <b>
+                        <a href="https://heiki.motchiy.com/teapot">
+                            418 I'm a teapot.
+                        </a>
+                    </b>
+                </li>
+                <li>
+                    <b>
+                        <a href="https://heiki.motchiy.com/unavailable_for_legal_reasons">
+                            451 Unavailable For Legal Reasons
+                        </a>
+                    </b>
+                </li>
+                <li>
+                    <b>
+                        <a href="https://heiki.motchiy.com/insufficient_storage">
+                            507 Insufficient Storage
+                        </a>
+                    </b>
+                </li>
+                <li>
+                    <b>
+                        <a href="https://heiki.motchiy.com/loop_detected">
+                            508 Loop Detected
+                        </a>
+                    </b>
+                </li>
+                <li>
+                    <b>
+                        <a href="https://heiki.motchiy.com/rulebreak">
+                            925 I'M BREAKING RULES!!!!
+                        </a>
+                    </b>
+                </li>
+            </ul>
+        </p>
+    </div>
+</DocumentLayout>
