@@ -9,7 +9,7 @@ interface Props {
     showAddForm?: boolean;
 }
 
-const { title, description, showAddForm = false } = Astro.props;
+const { title, description, showAddForm } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL("/imgs/ogp.png", Astro.site);
 
