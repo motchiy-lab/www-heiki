@@ -7,7 +7,22 @@ async function api(action, params = {}) {
     url.searchParams.set(k, v);
   }
   const r = await fetch(url);
-  return await r.json();
+  const body = await r.text();
+  let data;
+  try {
+    data = JSON.parse(body);
+  } catch {
+    const status = `${r.status} ${r.statusText}`.trim();
+    throw new Error(
+      r.ok
+        ? `API応答をJSONとして解析できませんでした (HTTP ${status})`
+        : `HTTP ${status}: ${body || "応答本文がありません"}`,
+    );
+  }
+  if (!r.ok) {
+    throw new Error(data.error || `HTTP ${r.status} ${r.statusText}`.trim());
+  }
+  return data;
 }
 
 
@@ -110,14 +125,25 @@ function channelClass(count) {
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
 
 async function load() {
-  const res = await api('list');
   const grid = document.getElementById('grid');
-  grid.innerHTML = '';
-  if (!res.ok) { grid.innerHTML = '<div style="color:#b00">読み込みエラー</div>'; return; }
-  const entries = res.entries || [];
-  const fragment = document.createDocumentFragment();
-  entries.forEach(en => fragment.appendChild(makeCard(en)));
-  grid.appendChild(fragment);
+  try {
+    const res = await api('list');
+    if (!res.ok) {
+      grid.textContent = `読み込みエラー: ${res.error || "APIからエラーが返されました"}`;
+      grid.style.color = "#b00";
+      return;
+    }
+    grid.textContent = "";
+    grid.style.color = "";
+    const entries = res.entries || [];
+    const fragment = document.createDocumentFragment();
+    entries.forEach(en => fragment.appendChild(makeCard(en)));
+    grid.appendChild(fragment);
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    grid.textContent = `読み込みエラー: ${detail}`;
+    grid.style.color = "#b00";
+  }
 }
 
 async function addVideo() {
