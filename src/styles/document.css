@@ -208,6 +208,13 @@ h3 {
     text-decoration: underline;
 }
 
+.index-text {
+    margin-top: 18px;
+    color: #555;
+    font-size: 13px;
+    text-align: center;
+}
+
 @media (max-width: 600px) {
     .breadcrumb {
         font-size: 0.75rem;

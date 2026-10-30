@@ -6,4 +6,9 @@ export default defineConfig({
   output: 'static',
   adapter: cloudflare(),
   session: false,
+  vite: {
+    optimizeDeps: {
+      exclude: ['astro:middleware'],
+    },
+  },
 });
