@@ -5,4 +5,5 @@ export default defineConfig({
   site: 'https://www.motchiy.com',
   output: 'static',
   adapter: cloudflare(),
+  session: false,
 });
