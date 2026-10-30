@@ -1,6 +1,8 @@
 import type { APIRoute } from "astro";
 import { env } from "cloudflare:workers";
 
+export const prerender = false;
+
 async function initDb(db: any) {
   await db
     .prepare(
